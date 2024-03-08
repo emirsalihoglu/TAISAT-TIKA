@@ -8,3 +8,6 @@ C:\Users\memir\source\repos\TAISAT\obj\Debug\TAISAT.csproj.GenerateResource.cach
 C:\Users\memir\source\repos\TAISAT\obj\Debug\TAISAT.csproj.CoreCompileInputs.cache
 C:\Users\memir\source\repos\TAISAT\obj\Debug\TAISAT.exe
 C:\Users\memir\source\repos\TAISAT\obj\Debug\TAISAT.pdb
+C:\Users\memir\source\repos\TAISAT\bin\Debug\GMap.NET.Core.dll
+C:\Users\memir\source\repos\TAISAT\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\memir\source\repos\TAISAT\obj\Debug\TAISAT.csproj.CopyComplete
