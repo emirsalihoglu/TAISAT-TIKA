@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelC1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelC1_L1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1C1_L1_L1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxKontrolSistemi = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelKontrolSistemi = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonIleri = new System.Windows.Forms.Button();
+            this.buttonSol = new System.Windows.Forms.Button();
+            this.buttonSag = new System.Windows.Forms.Button();
+            this.buttonGeri = new System.Windows.Forms.Button();
+            this.buttonDur = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxOtonomKontrolSistemi = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelOtonomKontrolSistemi = new System.Windows.Forms.TableLayoutPanel();
@@ -72,6 +77,7 @@
             // 
             // tableLayoutPanelMain
             // 
+            this.tableLayoutPanelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.tableLayoutPanelMain.ColumnCount = 3;
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -80,6 +86,7 @@
             this.tableLayoutPanelMain.Controls.Add(this.tableLayoutPanelC2, 1, 0);
             this.tableLayoutPanelMain.Controls.Add(this.tableLayoutPanelC3, 2, 0);
             this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelMain.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 1;
@@ -100,9 +107,9 @@
             this.tableLayoutPanelC1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanelC1.Name = "tableLayoutPanelC1";
             this.tableLayoutPanelC1.RowCount = 3;
-            this.tableLayoutPanelC1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanelC1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanelC1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanelC1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.5F));
+            this.tableLayoutPanelC1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanelC1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.5F));
             this.tableLayoutPanelC1.Size = new System.Drawing.Size(755, 1035);
             this.tableLayoutPanelC1.TabIndex = 0;
             // 
@@ -117,7 +124,7 @@
             this.tableLayoutPanelC1_L1.RowCount = 2;
             this.tableLayoutPanelC1_L1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanelC1_L1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanelC1_L1.Size = new System.Drawing.Size(749, 459);
+            this.tableLayoutPanelC1_L1.Size = new System.Drawing.Size(749, 485);
             this.tableLayoutPanelC1_L1.TabIndex = 0;
             // 
             // tableLayoutPanel1C1_L1_L1
@@ -132,21 +139,25 @@
             this.tableLayoutPanel1C1_L1_L1.Name = "tableLayoutPanel1C1_L1_L1";
             this.tableLayoutPanel1C1_L1_L1.RowCount = 1;
             this.tableLayoutPanel1C1_L1_L1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1C1_L1_L1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 361F));
-            this.tableLayoutPanel1C1_L1_L1.Size = new System.Drawing.Size(743, 361);
+            this.tableLayoutPanel1C1_L1_L1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 382F));
+            this.tableLayoutPanel1C1_L1_L1.Size = new System.Drawing.Size(743, 382);
             this.tableLayoutPanel1C1_L1_L1.TabIndex = 0;
             // 
             // groupBoxKontrolSistemi
             // 
+            this.groupBoxKontrolSistemi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
             this.groupBoxKontrolSistemi.Controls.Add(this.tableLayoutPanelKontrolSistemi);
             this.groupBoxKontrolSistemi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxKontrolSistemi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBoxKontrolSistemi.Font = new System.Drawing.Font("Bahnschrift SemiBold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBoxKontrolSistemi.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBoxKontrolSistemi.Location = new System.Drawing.Point(3, 3);
             this.groupBoxKontrolSistemi.Name = "groupBoxKontrolSistemi";
-            this.groupBoxKontrolSistemi.Size = new System.Drawing.Size(551, 355);
+            this.groupBoxKontrolSistemi.Size = new System.Drawing.Size(551, 376);
             this.groupBoxKontrolSistemi.TabIndex = 0;
             this.groupBoxKontrolSistemi.TabStop = false;
             this.groupBoxKontrolSistemi.Text = "KONTROL SİSTEMİ";
+            this.groupBoxKontrolSistemi.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBoxKontrolSistemi_Paint);
             // 
             // tableLayoutPanelKontrolSistemi
             // 
@@ -154,7 +165,11 @@
             this.tableLayoutPanelKontrolSistemi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelKontrolSistemi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanelKontrolSistemi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanelKontrolSistemi.Controls.Add(this.button1, 1, 0);
+            this.tableLayoutPanelKontrolSistemi.Controls.Add(this.buttonIleri, 1, 0);
+            this.tableLayoutPanelKontrolSistemi.Controls.Add(this.buttonSol, 0, 1);
+            this.tableLayoutPanelKontrolSistemi.Controls.Add(this.buttonSag, 2, 1);
+            this.tableLayoutPanelKontrolSistemi.Controls.Add(this.buttonGeri, 1, 2);
+            this.tableLayoutPanelKontrolSistemi.Controls.Add(this.buttonDur, 1, 1);
             this.tableLayoutPanelKontrolSistemi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelKontrolSistemi.Location = new System.Drawing.Point(3, 32);
             this.tableLayoutPanelKontrolSistemi.Name = "tableLayoutPanelKontrolSistemi";
@@ -162,19 +177,87 @@
             this.tableLayoutPanelKontrolSistemi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelKontrolSistemi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelKontrolSistemi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelKontrolSistemi.Size = new System.Drawing.Size(545, 320);
+            this.tableLayoutPanelKontrolSistemi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelKontrolSistemi.Size = new System.Drawing.Size(545, 341);
             this.tableLayoutPanelKontrolSistemi.TabIndex = 0;
             // 
-            // button1
+            // buttonIleri
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Image = global::TAISAT.Properties.Resources.icons8_up_50;
-            this.button1.Location = new System.Drawing.Point(184, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 100);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonIleri.BackColor = System.Drawing.Color.Transparent;
+            this.buttonIleri.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonIleri.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.buttonIleri.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.buttonIleri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonIleri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonIleri.Image = ((System.Drawing.Image)(resources.GetObject("buttonIleri.Image")));
+            this.buttonIleri.Location = new System.Drawing.Point(184, 3);
+            this.buttonIleri.Name = "buttonIleri";
+            this.buttonIleri.Size = new System.Drawing.Size(175, 107);
+            this.buttonIleri.TabIndex = 0;
+            this.buttonIleri.UseVisualStyleBackColor = false;
+            // 
+            // buttonSol
+            // 
+            this.buttonSol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.buttonSol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.buttonSol.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.buttonSol.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonSol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSol.Image = ((System.Drawing.Image)(resources.GetObject("buttonSol.Image")));
+            this.buttonSol.Location = new System.Drawing.Point(3, 116);
+            this.buttonSol.Name = "buttonSol";
+            this.buttonSol.Size = new System.Drawing.Size(175, 107);
+            this.buttonSol.TabIndex = 1;
+            this.buttonSol.UseVisualStyleBackColor = false;
+            // 
+            // buttonSag
+            // 
+            this.buttonSag.BackColor = System.Drawing.Color.Transparent;
+            this.buttonSag.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSag.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.buttonSag.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.buttonSag.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonSag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSag.Image = ((System.Drawing.Image)(resources.GetObject("buttonSag.Image")));
+            this.buttonSag.Location = new System.Drawing.Point(365, 116);
+            this.buttonSag.Name = "buttonSag";
+            this.buttonSag.Size = new System.Drawing.Size(177, 107);
+            this.buttonSag.TabIndex = 2;
+            this.buttonSag.UseVisualStyleBackColor = false;
+            // 
+            // buttonGeri
+            // 
+            this.buttonGeri.BackColor = System.Drawing.Color.Transparent;
+            this.buttonGeri.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonGeri.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.buttonGeri.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.buttonGeri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonGeri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGeri.Image = ((System.Drawing.Image)(resources.GetObject("buttonGeri.Image")));
+            this.buttonGeri.Location = new System.Drawing.Point(184, 229);
+            this.buttonGeri.Name = "buttonGeri";
+            this.buttonGeri.Size = new System.Drawing.Size(175, 109);
+            this.buttonGeri.TabIndex = 3;
+            this.buttonGeri.UseVisualStyleBackColor = false;
+            // 
+            // buttonDur
+            // 
+            this.buttonDur.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.buttonDur.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonDur.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.buttonDur.FlatAppearance.BorderSize = 10;
+            this.buttonDur.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.buttonDur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
+            this.buttonDur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDur.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonDur.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonDur.Location = new System.Drawing.Point(184, 116);
+            this.buttonDur.Name = "buttonDur";
+            this.buttonDur.Size = new System.Drawing.Size(175, 107);
+            this.buttonDur.TabIndex = 4;
+            this.buttonDur.Text = "DUR";
+            this.buttonDur.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel1
             // 
@@ -188,7 +271,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(180, 355);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(180, 376);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBoxOtonomKontrolSistemi
@@ -197,9 +280,9 @@
             this.groupBoxOtonomKontrolSistemi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxOtonomKontrolSistemi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBoxOtonomKontrolSistemi.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBoxOtonomKontrolSistemi.Location = new System.Drawing.Point(3, 91);
+            this.groupBoxOtonomKontrolSistemi.Location = new System.Drawing.Point(3, 97);
             this.groupBoxOtonomKontrolSistemi.Name = "groupBoxOtonomKontrolSistemi";
-            this.groupBoxOtonomKontrolSistemi.Size = new System.Drawing.Size(174, 261);
+            this.groupBoxOtonomKontrolSistemi.Size = new System.Drawing.Size(174, 276);
             this.groupBoxOtonomKontrolSistemi.TabIndex = 4;
             this.groupBoxOtonomKontrolSistemi.TabStop = false;
             this.groupBoxOtonomKontrolSistemi.Text = "OTONOM KONTROL SİSTEMİ";
@@ -211,7 +294,7 @@
             this.tableLayoutPanelOtonomKontrolSistemi.Controls.Add(this.labelOtonomKontrol, 0, 0);
             this.tableLayoutPanelOtonomKontrolSistemi.Controls.Add(this.buttonOtoAcKapat, 0, 1);
             this.tableLayoutPanelOtonomKontrolSistemi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanelOtonomKontrolSistemi.Location = new System.Drawing.Point(3, 36);
+            this.tableLayoutPanelOtonomKontrolSistemi.Location = new System.Drawing.Point(3, 51);
             this.tableLayoutPanelOtonomKontrolSistemi.Name = "tableLayoutPanelOtonomKontrolSistemi";
             this.tableLayoutPanelOtonomKontrolSistemi.RowCount = 2;
             this.tableLayoutPanelOtonomKontrolSistemi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -271,11 +354,11 @@
             this.tableLayoutPanelC1_L2.Controls.Add(this.groupBoxLoglar, 1, 0);
             this.tableLayoutPanelC1_L2.Controls.Add(this.groupBoxHataKodlari, 0, 0);
             this.tableLayoutPanelC1_L2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelC1_L2.Location = new System.Drawing.Point(3, 468);
+            this.tableLayoutPanelC1_L2.Location = new System.Drawing.Point(3, 494);
             this.tableLayoutPanelC1_L2.Name = "tableLayoutPanelC1_L2";
             this.tableLayoutPanelC1_L2.RowCount = 1;
             this.tableLayoutPanelC1_L2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelC1_L2.Size = new System.Drawing.Size(749, 149);
+            this.tableLayoutPanelC1_L2.Size = new System.Drawing.Size(749, 97);
             this.tableLayoutPanelC1_L2.TabIndex = 1;
             // 
             // groupBoxLoglar
@@ -284,7 +367,7 @@
             this.groupBoxLoglar.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBoxLoglar.Location = new System.Drawing.Point(377, 3);
             this.groupBoxLoglar.Name = "groupBoxLoglar";
-            this.groupBoxLoglar.Size = new System.Drawing.Size(369, 143);
+            this.groupBoxLoglar.Size = new System.Drawing.Size(369, 91);
             this.groupBoxLoglar.TabIndex = 1;
             this.groupBoxLoglar.TabStop = false;
             this.groupBoxLoglar.Text = "LOGLAR";
@@ -295,7 +378,7 @@
             this.groupBoxHataKodlari.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBoxHataKodlari.Location = new System.Drawing.Point(3, 3);
             this.groupBoxHataKodlari.Name = "groupBoxHataKodlari";
-            this.groupBoxHataKodlari.Size = new System.Drawing.Size(368, 143);
+            this.groupBoxHataKodlari.Size = new System.Drawing.Size(368, 91);
             this.groupBoxHataKodlari.TabIndex = 0;
             this.groupBoxHataKodlari.TabStop = false;
             this.groupBoxHataKodlari.Text = "HATA KODLARI";
@@ -483,7 +566,11 @@
         private System.Windows.Forms.GroupBox groupBoxAcKapat;
         private System.Windows.Forms.Button buttonAcKapat;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelKontrolSistemi;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonIleri;
+        private System.Windows.Forms.Button buttonSol;
+        private System.Windows.Forms.Button buttonSag;
+        private System.Windows.Forms.Button buttonGeri;
+        private System.Windows.Forms.Button buttonDur;
     }
 }
 

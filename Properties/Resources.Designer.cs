@@ -63,9 +63,19 @@ namespace TAISAT.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_up_50 {
+        internal static System.Drawing.Bitmap icons_right {
             get {
-                object obj = ResourceManager.GetObject("icons8-up-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons-right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons_up {
+            get {
+                object obj = ResourceManager.GetObject("icons-up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

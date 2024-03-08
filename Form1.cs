@@ -26,5 +26,30 @@ namespace TAISAT
         {
 
         }
+
+        //KONTROL SİSTEMİ GROUPBOX
+        private void groupBoxKontrolSistemi_Paint(object sender, PaintEventArgs e)
+        {
+            // GroupBox kenarlığını gizlemek için:
+            e.Graphics.Clear(Color.FromArgb(95, 95, 95));
+
+            // GroupBox arka planını gri renkte doldurmak için:
+            using (var brush = new SolidBrush(Color.FromArgb(95, 95, 95)))
+            {
+                e.Graphics.FillRectangle(brush, e.ClipRectangle);
+            }
+
+            // GroupBox başlığını çizmek için:
+            var textRect = new Rectangle(3, 3, groupBoxKontrolSistemi.Width - 6, groupBoxKontrolSistemi.Font.Height);
+            var sf = new StringFormat();
+            sf.Alignment = StringAlignment.Near;
+            sf.LineAlignment = StringAlignment.Center;
+            using (var font = new Font("Bahnschrift", 17))
+            {
+                e.Graphics.DrawString(groupBoxKontrolSistemi.Text, font, Brushes.White, textRect, sf);
+            }
+        }
+        //KONTROL SİSTEMİ GROUPBOX
+
     }
 }
