@@ -63,6 +63,26 @@ namespace TAISAT.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap _681d60ee_36b6_4729_a410_13d00ead81e3 {
+            get {
+                object obj = ResourceManager.GetObject("681d60ee-36b6-4729-a410-13d00ead81e3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bridal_pink___morwell_rose_garden {
+            get {
+                object obj = ResourceManager.GetObject("Bridal_pink_-_morwell_rose_garden", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap icons_right {
             get {
                 object obj = ResourceManager.GetObject("icons-right", resourceCulture);

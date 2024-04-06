@@ -92,6 +92,8 @@
     <Content Include="Icons\icons_left.png" />
     <Content Include="Icons\icons-right.png" />
     <Content Include="Icons\icons-up.png" />
+    <None Include="Resources\Bridal_pink_-_morwell_rose_garden.jpg" />
+    <None Include="Resources\681d60ee-36b6-4729-a410-13d00ead81e3.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
