@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +17,14 @@ namespace TAISAT
 {
     public partial class Form1 : Form
     {
+        private SerialPort port;
         private bool isGreen = true;
         private bool isWhite = true;
         public Form1()
         {
             InitializeComponent();
+            port = new SerialPort("COM3", 9600);
+            port.DataReceived += Port_DataReceived;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,14 +35,34 @@ namespace TAISAT
         }
 
 
-
+        //SAAT
         private void timerSaat_Tick(object sender, EventArgs e)
         {
             labelSaat.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+        //SAAT
 
 
+        //PORT TARAMA VE VERİ ALMA (TAMAMLANMADI)
+        private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            string data = port.ReadLine();
+            Invoke(new Action(() => textBox1.AppendText(data + "\n")));
+        }
+        private void buttonBaslat_Click(object sender, EventArgs e)
+        {
+            if (!port.IsOpen)
+                port.Open();
+        }
+        private void buttonDurdur_Click(object sender, EventArgs e)
+        {
+            if (port.IsOpen)
+                port.Close();
+        }
+        //PORT TARAMA VE VERİ ALMA
 
+
+        //HARİTA
         private void Harita()
         {
             map.MapProvider = GMapProviders.GoogleMap;
@@ -57,9 +82,6 @@ namespace TAISAT
         {
             Harita();
         }
-
-
-
         private void ZoomIn()
         {
             if (map.Zoom < map.MaxZoom)
@@ -82,9 +104,10 @@ namespace TAISAT
         {
             ZoomOut();
         }
+        //HARİTA
 
 
-
+        //OTONOM KONTROL
         private void OtonomKontrol()
         {
             if (isGreen)
@@ -99,12 +122,14 @@ namespace TAISAT
             }
             isGreen = !isGreen;
         }
-
         private void buttonOtoAcKapat_Click(object sender, EventArgs e)
         {
             OtonomKontrol();
         }
+        //OTONOM KONTROL
 
+
+        //KLAVYEDEN KULLANIM
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -156,6 +181,6 @@ namespace TAISAT
                     break;
             }
         }
-
+        //KLAVYEDEN KULLANIM
     }
 }
