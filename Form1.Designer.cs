@@ -48,6 +48,7 @@
             this.buttonOtoAcKapat = new System.Windows.Forms.Button();
             this.groupBoxAcKapat = new System.Windows.Forms.GroupBox();
             this.buttonAcKapat = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelC1_L2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxLoglar = new System.Windows.Forms.GroupBox();
             this.groupBoxHataKodlari = new System.Windows.Forms.GroupBox();
@@ -70,6 +71,12 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.labelSaat = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonBaslat = new System.Windows.Forms.Button();
+            this.buttonDurdur = new System.Windows.Forms.Button();
+            this.comboBoxPort = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanelC3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxKamera = new System.Windows.Forms.GroupBox();
             this.groupBoxBitkiBilgisi = new System.Windows.Forms.GroupBox();
@@ -89,11 +96,6 @@
             this.Long = new System.Windows.Forms.Label();
             this.buttonZoomIn = new System.Windows.Forms.Button();
             this.timerSaat = new System.Windows.Forms.Timer(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonBaslat = new System.Windows.Forms.Button();
-            this.buttonDurdur = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelC1.SuspendLayout();
             this.tableLayoutPanelC1_L1.SuspendLayout();
@@ -112,6 +114,9 @@
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanelC3.SuspendLayout();
             this.groupBoxBitkiBilgisi.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -120,8 +125,6 @@
             this.groupBoxHarita.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.tableLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMain
@@ -395,6 +398,13 @@
             this.buttonAcKapat.TabIndex = 6;
             this.buttonAcKapat.UseVisualStyleBackColor = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 391);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 1;
+            // 
             // tableLayoutPanelC1_L2
             // 
             this.tableLayoutPanelC1_L2.ColumnCount = 2;
@@ -445,11 +455,11 @@
             this.tableLayoutPanelC2.Location = new System.Drawing.Point(764, 3);
             this.tableLayoutPanelC2.Name = "tableLayoutPanelC2";
             this.tableLayoutPanelC2.RowCount = 5;
-            this.tableLayoutPanelC2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.58763F));
-            this.tableLayoutPanelC2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.731959F));
-            this.tableLayoutPanelC2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.2268F));
-            this.tableLayoutPanelC2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.2268F));
-            this.tableLayoutPanelC2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.2268F));
+            this.tableLayoutPanelC2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.01806F));
+            this.tableLayoutPanelC2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.41489F));
+            this.tableLayoutPanelC2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.52235F));
+            this.tableLayoutPanelC2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.52235F));
+            this.tableLayoutPanelC2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.52235F));
             this.tableLayoutPanelC2.Size = new System.Drawing.Size(374, 1035);
             this.tableLayoutPanelC2.TabIndex = 1;
             // 
@@ -458,9 +468,9 @@
             this.groupBoxAracBilgileri.Controls.Add(this.tableLayoutPanel2);
             this.groupBoxAracBilgileri.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxAracBilgileri.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBoxAracBilgileri.Location = new System.Drawing.Point(3, 285);
+            this.groupBoxAracBilgileri.Location = new System.Drawing.Point(3, 306);
             this.groupBoxAracBilgileri.Name = "groupBoxAracBilgileri";
-            this.groupBoxAracBilgileri.Size = new System.Drawing.Size(368, 244);
+            this.groupBoxAracBilgileri.Size = new System.Drawing.Size(368, 237);
             this.groupBoxAracBilgileri.TabIndex = 5;
             this.groupBoxAracBilgileri.TabStop = false;
             this.groupBoxAracBilgileri.Text = "ARAÇ BİLGİLERİ";
@@ -482,7 +492,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(362, 215);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(362, 208);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // groupBox1
@@ -491,7 +501,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(138, 65);
+            this.groupBox1.Size = new System.Drawing.Size(138, 63);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PİL";
@@ -514,7 +524,7 @@
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(132, 43);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(132, 41);
             this.tableLayoutPanel10.TabIndex = 0;
             // 
             // button7
@@ -526,7 +536,7 @@
             this.button7.Location = new System.Drawing.Point(104, 0);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(28, 43);
+            this.button7.Size = new System.Drawing.Size(28, 41);
             this.button7.TabIndex = 4;
             this.button7.UseVisualStyleBackColor = false;
             // 
@@ -539,7 +549,7 @@
             this.button6.Location = new System.Drawing.Point(78, 0);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(26, 43);
+            this.button6.Size = new System.Drawing.Size(26, 41);
             this.button6.TabIndex = 3;
             this.button6.UseVisualStyleBackColor = false;
             // 
@@ -552,7 +562,7 @@
             this.button5.Location = new System.Drawing.Point(52, 0);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(26, 43);
+            this.button5.Size = new System.Drawing.Size(26, 41);
             this.button5.TabIndex = 2;
             this.button5.UseVisualStyleBackColor = false;
             // 
@@ -565,7 +575,7 @@
             this.button4.Location = new System.Drawing.Point(26, 0);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(26, 43);
+            this.button4.Size = new System.Drawing.Size(26, 41);
             this.button4.TabIndex = 1;
             this.button4.UseVisualStyleBackColor = false;
             // 
@@ -578,16 +588,16 @@
             this.button3.Location = new System.Drawing.Point(0, 0);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(26, 43);
+            this.button3.Size = new System.Drawing.Size(26, 41);
             this.button3.TabIndex = 0;
             this.button3.UseVisualStyleBackColor = false;
             // 
             // groupBox2
             // 
             this.groupBox2.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox2.Location = new System.Drawing.Point(3, 74);
+            this.groupBox2.Location = new System.Drawing.Point(3, 72);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(138, 65);
+            this.groupBox2.Size = new System.Drawing.Size(138, 63);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
@@ -595,9 +605,9 @@
             // groupBox3
             // 
             this.groupBox3.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox3.Location = new System.Drawing.Point(3, 145);
+            this.groupBox3.Location = new System.Drawing.Point(3, 141);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(138, 67);
+            this.groupBox3.Size = new System.Drawing.Size(138, 64);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
@@ -614,7 +624,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(212, 65);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(212, 63);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // tableLayoutPanel4
@@ -622,22 +632,22 @@
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(147, 74);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(147, 72);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(212, 65);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(212, 63);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // groupBoxPort
             // 
             this.groupBoxPort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxPort.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBoxPort.Location = new System.Drawing.Point(3, 785);
+            this.groupBoxPort.Location = new System.Drawing.Point(3, 792);
             this.groupBoxPort.Name = "groupBoxPort";
-            this.groupBoxPort.Size = new System.Drawing.Size(368, 247);
+            this.groupBoxPort.Size = new System.Drawing.Size(368, 240);
             this.groupBoxPort.TabIndex = 3;
             this.groupBoxPort.TabStop = false;
             this.groupBoxPort.Text = "PORTTAN GELEN BİLGİLER";
@@ -646,9 +656,9 @@
             // 
             this.groupBoxGorevListesi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxGorevListesi.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBoxGorevListesi.Location = new System.Drawing.Point(3, 535);
+            this.groupBoxGorevListesi.Location = new System.Drawing.Point(3, 549);
             this.groupBoxGorevListesi.Name = "groupBoxGorevListesi";
-            this.groupBoxGorevListesi.Size = new System.Drawing.Size(368, 244);
+            this.groupBoxGorevListesi.Size = new System.Drawing.Size(368, 237);
             this.groupBoxGorevListesi.TabIndex = 0;
             this.groupBoxGorevListesi.TabStop = false;
             this.groupBoxGorevListesi.Text = "GÖREV LİSTESİ";
@@ -665,7 +675,8 @@
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(368, 196);
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(368, 190);
             this.tableLayoutPanel9.TabIndex = 6;
             // 
             // labelSaat
@@ -673,9 +684,9 @@
             this.labelSaat.AutoSize = true;
             this.labelSaat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelSaat.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelSaat.Location = new System.Drawing.Point(3, 176);
+            this.labelSaat.Location = new System.Drawing.Point(3, 171);
             this.labelSaat.Name = "labelSaat";
-            this.labelSaat.Size = new System.Drawing.Size(362, 20);
+            this.labelSaat.Size = new System.Drawing.Size(362, 19);
             this.labelSaat.TabIndex = 0;
             this.labelSaat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -684,9 +695,84 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Location = new System.Drawing.Point(3, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(362, 170);
+            this.pictureBox2.Size = new System.Drawing.Size(362, 165);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.tableLayoutPanel11);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox4.Location = new System.Drawing.Point(3, 199);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(368, 101);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "PORT TARAMA";
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnCount = 2;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel11.Controls.Add(this.tableLayoutPanel12, 1, 0);
+            this.tableLayoutPanel11.Controls.Add(this.comboBoxPort, 0, 0);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 18);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(362, 80);
+            this.tableLayoutPanel11.TabIndex = 0;
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 1;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Controls.Add(this.buttonBaslat, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.buttonDurdur, 0, 1);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(111, 3);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 2;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(248, 74);
+            this.tableLayoutPanel12.TabIndex = 0;
+            // 
+            // buttonBaslat
+            // 
+            this.buttonBaslat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonBaslat.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonBaslat.Location = new System.Drawing.Point(3, 3);
+            this.buttonBaslat.Name = "buttonBaslat";
+            this.buttonBaslat.Size = new System.Drawing.Size(242, 31);
+            this.buttonBaslat.TabIndex = 0;
+            this.buttonBaslat.Text = "BAŞLAT";
+            this.buttonBaslat.UseVisualStyleBackColor = true;
+            this.buttonBaslat.Click += new System.EventHandler(this.buttonBaslat_Click);
+            // 
+            // buttonDurdur
+            // 
+            this.buttonDurdur.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonDurdur.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonDurdur.Location = new System.Drawing.Point(3, 40);
+            this.buttonDurdur.Name = "buttonDurdur";
+            this.buttonDurdur.Size = new System.Drawing.Size(242, 31);
+            this.buttonDurdur.TabIndex = 1;
+            this.buttonDurdur.Text = "DURDUR";
+            this.buttonDurdur.UseVisualStyleBackColor = true;
+            this.buttonDurdur.Click += new System.EventHandler(this.buttonDurdur_Click);
+            // 
+            // comboBoxPort
+            // 
+            this.comboBoxPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxPort.FormattingEnabled = true;
+            this.comboBoxPort.Location = new System.Drawing.Point(3, 29);
+            this.comboBoxPort.Name = "comboBoxPort";
+            this.comboBoxPort.Size = new System.Drawing.Size(102, 22);
+            this.comboBoxPort.TabIndex = 1;
             // 
             // tableLayoutPanelC3
             // 
@@ -956,63 +1042,10 @@
             this.buttonZoomIn.UseVisualStyleBackColor = true;
             this.buttonZoomIn.Click += new System.EventHandler(this.buttonZoomIn_Click);
             // 
-            // groupBox4
+            // timerSaat
             // 
-            this.groupBox4.Controls.Add(this.tableLayoutPanel11);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox4.Location = new System.Drawing.Point(3, 205);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(368, 74);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "PORT TARAMA";
-            // 
-            // tableLayoutPanel11
-            // 
-            this.tableLayoutPanel11.ColumnCount = 2;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Controls.Add(this.buttonBaslat, 0, 0);
-            this.tableLayoutPanel11.Controls.Add(this.buttonDurdur, 1, 0);
-            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 18);
-            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 1;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(362, 53);
-            this.tableLayoutPanel11.TabIndex = 8;
-            // 
-            // buttonBaslat
-            // 
-            this.buttonBaslat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonBaslat.Font = new System.Drawing.Font("Bahnschrift SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonBaslat.Location = new System.Drawing.Point(3, 3);
-            this.buttonBaslat.Name = "buttonBaslat";
-            this.buttonBaslat.Size = new System.Drawing.Size(175, 47);
-            this.buttonBaslat.TabIndex = 0;
-            this.buttonBaslat.Text = "BAŞLAT";
-            this.buttonBaslat.UseVisualStyleBackColor = true;
-            this.buttonBaslat.Click += new System.EventHandler(this.buttonBaslat_Click);
-            // 
-            // buttonDurdur
-            // 
-            this.buttonDurdur.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonDurdur.Font = new System.Drawing.Font("Bahnschrift SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonDurdur.Location = new System.Drawing.Point(184, 3);
-            this.buttonDurdur.Name = "buttonDurdur";
-            this.buttonDurdur.Size = new System.Drawing.Size(175, 47);
-            this.buttonDurdur.TabIndex = 1;
-            this.buttonDurdur.Text = "DURDUR";
-            this.buttonDurdur.UseVisualStyleBackColor = true;
-            this.buttonDurdur.Click += new System.EventHandler(this.buttonDurdur_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(3, 391);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.timerSaat.Interval = 1000;
+            this.timerSaat.Tick += new System.EventHandler(this.timerSaat_Tick);
             // 
             // Form1
             // 
@@ -1046,6 +1079,9 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanelC3.ResumeLayout(false);
             this.groupBoxBitkiBilgisi.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -1056,8 +1092,6 @@
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.tableLayoutPanel11.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1124,10 +1158,12 @@
         private System.Windows.Forms.Label labelSaat;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Button buttonBaslat;
         private System.Windows.Forms.Button buttonDurdur;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBoxPort;
     }
 }
 

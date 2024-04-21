@@ -25,6 +25,14 @@ namespace TAISAT
             InitializeComponent();
             port = new SerialPort("COM3", 9600);
             port.DataReceived += Port_DataReceived;
+            try
+            {
+                port.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Port açılamadı: " + ex.Message);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -32,6 +40,16 @@ namespace TAISAT
             timerSaat.Start();
             this.KeyDown += Form1_KeyDown;
             this.KeyPreview = true;
+
+            foreach (string portName in SerialPort.GetPortNames())
+            {
+                comboBoxPort.Items.Add(portName);
+            }
+
+            if (comboBoxPort.Items.Count > 0)
+            {
+                comboBoxPort.SelectedIndex = 0;
+            }
         }
 
 
@@ -43,21 +61,34 @@ namespace TAISAT
         //SAAT
 
 
-        //PORT TARAMA VE VERİ ALMA (TAMAMLANMADI)
+        //PORT TARAMA VE VERİ ALMA
         private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string data = port.ReadLine();
-            Invoke(new Action(() => textBox1.AppendText(data + "\n")));
+            string data = port.ReadLine(); // Veriyi okuyun
+                                           // Veriyi arayüze yazmak için uygun bir kontrol kullanın
+                                           // Örneğin, bir TextBox kontrolü varsa:
+            Invoke(new Action(() =>
+            {
+                textBox1.AppendText(data + Environment.NewLine);
+            }));
         }
         private void buttonBaslat_Click(object sender, EventArgs e)
         {
             if (!port.IsOpen)
-                port.Open();
+            {
+                try
+                {
+                    port.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Port açılamadı: " + ex.Message);
+                }
+            }
         }
         private void buttonDurdur_Click(object sender, EventArgs e)
         {
-            if (port.IsOpen)
-                port.Close();
+            port.Close();
         }
         //PORT TARAMA VE VERİ ALMA
 
