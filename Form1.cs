@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace TAISAT
 {
@@ -69,7 +70,7 @@ namespace TAISAT
                                            // Örneğin, bir TextBox kontrolü varsa:
             Invoke(new Action(() =>
             {
-                textBox1.AppendText(data + Environment.NewLine);
+                richTextBox2.AppendText(data + Environment.NewLine);
             }));
         }
         private void buttonBaslat_Click(object sender, EventArgs e)
@@ -136,6 +137,29 @@ namespace TAISAT
             ZoomOut();
         }
         //HARİTA
+
+        //BİTKİ HARİTA
+        private void BitkiHarita()
+        {
+            bMap.MapProvider = GMapProviders.GoogleMap;
+            double lat = Convert.ToDouble(bLat.Text);
+            double lon = Convert.ToDouble(bLong.Text);
+            bMap.Position = new GMap.NET.PointLatLng(lat, lon);
+            bMap.Zoom = 17;
+            bMap.MinZoom = 5;
+            bMap.MaxZoom = 100;
+
+            GMap.NET.PointLatLng point = new GMap.NET.PointLatLng(lat, lon);
+            GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
+
+            GMapOverlay markers = new GMapOverlay("markers");
+        }
+        private void buttonBitkiHarita_Click(object sender, EventArgs e)
+        {
+            BitkiHarita();
+        }
+
+        //BİTKİ HARİTA
 
 
         //OTONOM KONTROL

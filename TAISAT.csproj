@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,6 +93,16 @@
     <Content Include="Icons\icons_left.png" />
     <Content Include="Icons\icons-right.png" />
     <Content Include="Icons\icons-up.png" />
+    <None Include="Resources\InShot_20240430_190831031Y.jpg" />
+    <None Include="Resources\InShot_20240430_190859433.jpg" />
+    <None Include="Resources\InShot_20240430_190313730.jpg" />
+    <None Include="Resources\InShot_20240430_190341313.jpg" />
+    <None Include="Resources\round-360-degree-measuring-scale-of-barometer-speedometer-compass-thermometer-circular-measuring-tool-vector.jpg" />
+    <None Include="Resources\25849200_0_bwvhc3vyaw5nx2npcmnszxmtmdg.jpg" />
+    <None Include="Resources\Protractor360.png" />
+    <None Include="Resources\arac_yan.jpg" />
+    <None Include="Resources\arac_on.jpg" />
+    <None Include="Resources\taisat logo.jpg" />
     <None Include="Resources\Bridal_pink_-_morwell_rose_garden.jpg" />
     <None Include="Resources\681d60ee-36b6-4729-a410-13d00ead81e3.jpg" />
   </ItemGroup>

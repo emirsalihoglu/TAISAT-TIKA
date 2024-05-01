@@ -118,16 +118,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="icons-right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icons\icons-right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="681d60ee-36b6-4729-a410-13d00ead81e3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\681d60ee-36b6-4729-a410-13d00ead81e3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Protractor360" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Protractor360.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons-up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Icons\icons-up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="arac_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arac_on.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InShot_20240430_190341313" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InShot_20240430_190341313.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arac_yan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arac_yan.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="25849200_0_bwvhc3vyaw5nx2npcmnszxmtmdg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\25849200_0_bwvhc3vyaw5nx2npcmnszxmtmdg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons-right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icons\icons-right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InShot_20240430_190859433" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InShot_20240430_190859433.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Bridal_pink_-_morwell_rose_garden" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bridal_pink_-_morwell_rose_garden.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InShot_20240430_190313730" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InShot_20240430_190313730.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="round-360-degree-measuring-scale-of-barometer-speedometer-compass-thermometer-circular-measuring-tool-vector" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\round-360-degree-measuring-scale-of-barometer-speedometer-compass-thermometer-circular-measuring-tool-vector.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InShot_20240430_190831031Y" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InShot_20240430_190831031Y.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

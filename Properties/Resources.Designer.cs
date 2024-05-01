@@ -63,9 +63,29 @@ namespace TAISAT.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap _681d60ee_36b6_4729_a410_13d00ead81e3 {
+        internal static System.Drawing.Bitmap _25849200_0_bwvhc3vyaw5nx2npcmnszxmtmdg {
             get {
-                object obj = ResourceManager.GetObject("681d60ee-36b6-4729-a410-13d00ead81e3", resourceCulture);
+                object obj = ResourceManager.GetObject("25849200_0_bwvhc3vyaw5nx2npcmnszxmtmdg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap arac_on {
+            get {
+                object obj = ResourceManager.GetObject("arac_on", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap arac_yan {
+            get {
+                object obj = ResourceManager.GetObject("arac_yan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -96,6 +116,67 @@ namespace TAISAT.Properties {
         internal static System.Drawing.Bitmap icons_up {
             get {
                 object obj = ResourceManager.GetObject("icons-up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap InShot_20240430_190313730 {
+            get {
+                object obj = ResourceManager.GetObject("InShot_20240430_190313730", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap InShot_20240430_190341313 {
+            get {
+                object obj = ResourceManager.GetObject("InShot_20240430_190341313", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap InShot_20240430_190831031Y {
+            get {
+                object obj = ResourceManager.GetObject("InShot_20240430_190831031Y", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap InShot_20240430_190859433 {
+            get {
+                object obj = ResourceManager.GetObject("InShot_20240430_190859433", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap Protractor360 {
+            get {
+                object obj = ResourceManager.GetObject("Protractor360", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap round_360_degree_measuring_scale_of_barometer_speedometer_compass_thermometer_circular_measuring_tool_vector {
+            get {
+                object obj = ResourceManager.GetObject("round-360-degree-measuring-scale-of-barometer-speedometer-compass-thermometer-cir" +
+                        "cular-measuring-tool-vector", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
