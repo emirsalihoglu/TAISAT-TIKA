@@ -2,17 +2,11 @@
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO.Ports;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
+using WebSocketSharp;
+using Newtonsoft.Json;
 
 namespace TAISAT
 {
@@ -21,6 +15,9 @@ namespace TAISAT
         private SerialPort port;
         private bool isGreen = true;
         private bool isWhite = true;
+        private WebSocket ws;
+        string rosBridgeUrl = "ws://simple-websocket-server-echo.glitch.me/"; //ROS Server IP'sine göre özelleştirilecek.
+
         public Form1()
         {
             InitializeComponent();
@@ -53,26 +50,28 @@ namespace TAISAT
             }
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (ws != null)
+            {
+                ws.Close();
+            }
+        }
 
-        //SAAT
         private void timerSaat_Tick(object sender, EventArgs e)
         {
             labelSaat.Text = DateTime.Now.ToString("HH:mm:ss");
         }
-        //SAAT
 
-
-        //PORT TARAMA VE VERİ ALMA
         private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string data = port.ReadLine(); // Veriyi okuyun
-                                           // Veriyi arayüze yazmak için uygun bir kontrol kullanın
-                                           // Örneğin, bir TextBox kontrolü varsa:
+            string data = port.ReadLine();
             Invoke(new Action(() =>
             {
                 richTextBox2.AppendText(data + Environment.NewLine);
             }));
         }
+
         private void buttonBaslat_Click(object sender, EventArgs e)
         {
             if (!port.IsOpen)
@@ -87,14 +86,12 @@ namespace TAISAT
                 }
             }
         }
+
         private void buttonDurdur_Click(object sender, EventArgs e)
         {
             port.Close();
         }
-        //PORT TARAMA VE VERİ ALMA
 
-
-        //HARİTA
         private void Harita()
         {
             map.MapProvider = GMapProviders.GoogleMap;
@@ -109,11 +106,15 @@ namespace TAISAT
             GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
 
             GMapOverlay markers = new GMapOverlay("markers");
+            markers.Markers.Add(marker);
+            map.Overlays.Add(markers);
         }
+
         private void buttonHarita_Click(object sender, EventArgs e)
         {
             Harita();
         }
+
         private void ZoomIn()
         {
             if (map.Zoom < map.MaxZoom)
@@ -121,6 +122,7 @@ namespace TAISAT
                 map.Zoom += 1;
             }
         }
+
         private void ZoomOut()
         {
             if (map.Zoom > map.MinZoom)
@@ -128,41 +130,17 @@ namespace TAISAT
                 map.Zoom -= 1;
             }
         }
+
         private void buttonZoomIn_Click(object sender, EventArgs e)
         {
             ZoomIn();
         }
+
         private void buttonZoomOut_Click(object sender, EventArgs e)
         {
             ZoomOut();
         }
-        //HARİTA
 
-        //BİTKİ HARİTA
-        private void BitkiHarita()
-        {
-            bMap.MapProvider = GMapProviders.GoogleMap;
-            double lat = Convert.ToDouble(bLat.Text);
-            double lon = Convert.ToDouble(bLong.Text);
-            bMap.Position = new GMap.NET.PointLatLng(lat, lon);
-            bMap.Zoom = 17;
-            bMap.MinZoom = 5;
-            bMap.MaxZoom = 100;
-
-            GMap.NET.PointLatLng point = new GMap.NET.PointLatLng(lat, lon);
-            GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
-
-            GMapOverlay markers = new GMapOverlay("markers");
-        }
-        private void buttonBitkiHarita_Click(object sender, EventArgs e)
-        {
-            BitkiHarita();
-        }
-
-        //BİTKİ HARİTA
-
-
-        //OTONOM KONTROL
         private void OtonomKontrol()
         {
             if (isGreen)
@@ -177,14 +155,12 @@ namespace TAISAT
             }
             isGreen = !isGreen;
         }
+
         private void buttonOtoAcKapat_Click(object sender, EventArgs e)
         {
             OtonomKontrol();
         }
-        //OTONOM KONTROL
 
-
-        //KLAVYEDEN KULLANIM
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -215,6 +191,7 @@ namespace TAISAT
                     break;
             }
         }
+
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -236,6 +213,58 @@ namespace TAISAT
                     break;
             }
         }
-        //KLAVYEDEN KULLANIM
+
+        private void WebSocket()
+        {
+            ws = new WebSocket(rosBridgeUrl);
+
+            ws.OnOpen += (sender, e) =>
+            {
+                MessageBox.Show("ROSBridge sunucusuna bağlantı başarılı.");
+            };
+
+            ws.OnError += (sender, e) =>
+            {
+                MessageBox.Show("Bağlantı hatası: " + e.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+
+            ws.OnMessage += (sender, e) =>
+            {
+                MessageBox.Show("Mesaj alındı: " + e.Data);
+            };
+
+            ws.OnClose += (sender, e) =>
+            {
+                MessageBox.Show("Bağlantı kapatıldı.");
+            };
+
+            try
+            {
+                ws.Connect();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bağlantı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonIleri_Click(object sender, EventArgs e)
+        {
+            if (ws != null && ws.IsAlive)
+            {
+                string rosMessage = "{ \"op\": \"publish\", \"topic\": \"/your_topic\", \"msg\": { \"data\": \"Hello, ROS!\" } }";
+                ws.Send(rosMessage);
+                MessageBox.Show("Sent: " + rosMessage);
+            }
+            else
+            {
+                MessageBox.Show("WebSocket connection is not open.");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WebSocket();
+        }
     }
 }
