@@ -17,7 +17,6 @@ C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\TAISAT.pdb
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\GMap.NET.Core.dll
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\GMap.NET.WindowsForms.dll
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.csproj.AssemblyReference.cache
-C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.Form1.resources
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.Properties.Resources.resources
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.csproj.GenerateResource.cache
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.csproj.CoreCompileInputs.cache
@@ -29,3 +28,4 @@ C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\rosbridge_client_common.d
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\rosbridge_client_socket_for_desktop.dll
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\websocket-sharp.dll
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\Newtonsoft.Json.xml
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.TAAV.resources

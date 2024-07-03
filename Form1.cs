@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace TAISAT
 {
-    public partial class Form1 : Form
+    public partial class TAAV : Form
     {
         private SerialPort port;
         private bool isGreen = true;
@@ -18,11 +18,12 @@ namespace TAISAT
         private WebSocket ws;
         string rosBridgeUrl = "ws://simple-websocket-server-echo.glitch.me/"; //ROS Server IP'sine göre özelleştirilecek.
 
-        public Form1()
+        public TAAV()
         {
             InitializeComponent();
             port = new SerialPort("COM3", 9600);
             port.DataReceived += Port_DataReceived;
+
             try
             {
                 port.Open();
@@ -33,12 +34,17 @@ namespace TAISAT
             }
         }
 
+
+        #region Methods
+        //Form Load and Form Closing:
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Timer:
             timerSaat.Start();
             this.KeyDown += Form1_KeyDown;
             this.KeyPreview = true;
 
+            //Port:
             foreach (string portName in SerialPort.GetPortNames())
             {
                 comboBoxPort.Items.Add(portName);
@@ -48,8 +54,22 @@ namespace TAISAT
             {
                 comboBoxPort.SelectedIndex = 0;
             }
-        }
 
+            //Button Customization:
+            CustomButton.SetButton(this.Controls);
+
+            Button[] directionButtons = { buttonIleri, buttonGeri, buttonSag, buttonSol, buttonDur };
+            CustomButton.SetButtonColors(directionButtons, Color.FromArgb(64, 68, 75), Color.White);
+            Button[] batteryButtons = { buttonP1, buttonP2, buttonP3, buttonP4, buttonP5, buttonP6 };
+            CustomButton.SetButtonColors(batteryButtons, Color.LimeGreen, Color.White);
+            buttonAcKapat.BackColor = Color.FromArgb(200, 16, 46);
+
+            CustomButton.SetButtonMouseEvents(directionButtons, Color.FromArgb(54, 57, 63), Color.FromArgb(64, 68, 75));
+            CustomButton.SetButtonMouseEvents(batteryButtons, Color.LimeGreen, Color.Green);
+            buttonAcKapat.FlatAppearance.MouseDownBackColor = Color.Red;
+            buttonAcKapat.FlatAppearance.MouseOverBackColor = Color.Red;
+
+        }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (ws != null)
@@ -58,11 +78,15 @@ namespace TAISAT
             }
         }
 
+
+        //Timer:
         private void timerSaat_Tick(object sender, EventArgs e)
         {
             labelSaat.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+        
 
+        //Port:
         private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string data = port.ReadLine();
@@ -72,6 +96,8 @@ namespace TAISAT
             }));
         }
 
+
+        //Button Click:
         private void buttonBaslat_Click(object sender, EventArgs e)
         {
             if (!port.IsOpen)
@@ -86,12 +112,46 @@ namespace TAISAT
                 }
             }
         }
-
         private void buttonDurdur_Click(object sender, EventArgs e)
         {
             port.Close();
         }
+        private void buttonHarita_Click(object sender, EventArgs e)
+        {
+            Harita();
+        }
+        private void buttonZoomIn_Click(object sender, EventArgs e)
+        {
+            ZoomIn();
+        }
+        private void buttonZoomOut_Click(object sender, EventArgs e)
+        {
+            ZoomOut();
+        }
+        private void buttonOtoAcKapat_Click(object sender, EventArgs e)
+        {
+            OtonomKontrol();
+        }
+        private void buttonIleri_Click(object sender, EventArgs e) //İstenilen mesaj ayarlanacak. Bu bir örnek.
+        {
+            if (ws != null && ws.IsAlive)
+            {
+                string rosMessage = "{ \"op\": \"publish\", \"topic\": \"/your_topic\", \"msg\": { \"data\": \"Hello, ROS!\" } }";
+                ws.Send(rosMessage);
+                MessageBox.Show("Sent: " + rosMessage);
+            }
+            else
+            {
+                MessageBox.Show("WebSocket connection is not open.");
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WebSocket();
+        }
 
+
+        //Map:
         private void Harita()
         {
             map.MapProvider = GMapProviders.GoogleMap;
@@ -109,12 +169,6 @@ namespace TAISAT
             markers.Markers.Add(marker);
             map.Overlays.Add(markers);
         }
-
-        private void buttonHarita_Click(object sender, EventArgs e)
-        {
-            Harita();
-        }
-
         private void ZoomIn()
         {
             if (map.Zoom < map.MaxZoom)
@@ -122,7 +176,6 @@ namespace TAISAT
                 map.Zoom += 1;
             }
         }
-
         private void ZoomOut()
         {
             if (map.Zoom > map.MinZoom)
@@ -131,36 +184,8 @@ namespace TAISAT
             }
         }
 
-        private void buttonZoomIn_Click(object sender, EventArgs e)
-        {
-            ZoomIn();
-        }
 
-        private void buttonZoomOut_Click(object sender, EventArgs e)
-        {
-            ZoomOut();
-        }
-
-        private void OtonomKontrol()
-        {
-            if (isGreen)
-            {
-                labelOtonomKontrol.BackColor = Color.Red;
-                labelOtonomKontrol.Text = "KAPALI";
-            }
-            else
-            {
-                labelOtonomKontrol.BackColor = Color.ForestGreen;
-                labelOtonomKontrol.Text = "AÇIK";
-            }
-            isGreen = !isGreen;
-        }
-
-        private void buttonOtoAcKapat_Click(object sender, EventArgs e)
-        {
-            OtonomKontrol();
-        }
-
+        //Keyboard Control:
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -191,7 +216,6 @@ namespace TAISAT
                     break;
             }
         }
-
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -214,6 +238,25 @@ namespace TAISAT
             }
         }
 
+
+        //Autonomous:
+        private void OtonomKontrol()
+        {
+            if (isGreen)
+            {
+                labelOtonomKontrol.BackColor = Color.Red;
+                labelOtonomKontrol.Text = "KAPALI";
+            }
+            else
+            {
+                labelOtonomKontrol.BackColor = Color.ForestGreen;
+                labelOtonomKontrol.Text = "AÇIK";
+            }
+            isGreen = !isGreen;
+        }
+
+
+        //WebSocket:
         private void WebSocket()
         {
             ws = new WebSocket(rosBridgeUrl);
@@ -248,23 +291,7 @@ namespace TAISAT
             }
         }
 
-        private void buttonIleri_Click(object sender, EventArgs e)
-        {
-            if (ws != null && ws.IsAlive)
-            {
-                string rosMessage = "{ \"op\": \"publish\", \"topic\": \"/your_topic\", \"msg\": { \"data\": \"Hello, ROS!\" } }";
-                ws.Send(rosMessage);
-                MessageBox.Show("Sent: " + rosMessage);
-            }
-            else
-            {
-                MessageBox.Show("WebSocket connection is not open.");
-            }
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            WebSocket();
-        }
     }
+    #endregion
 }
