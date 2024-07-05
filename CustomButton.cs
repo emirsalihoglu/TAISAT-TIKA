@@ -18,7 +18,6 @@ public class CustomButton : Button
                 ApplyDefaultStyle(button);
             }
 
-            // If the control is a container (e.g., Panel, GroupBox), apply recursively
             if (control.HasChildren)
             {
                 SetButton(control.Controls);

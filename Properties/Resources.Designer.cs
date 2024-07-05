@@ -113,6 +113,16 @@ namespace TAISAT.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap closebutton {
+            get {
+                object obj = ResourceManager.GetObject("closebutton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons_right {
             get {
                 object obj = ResourceManager.GetObject("icons-right", resourceCulture);
@@ -166,6 +176,16 @@ namespace TAISAT.Properties {
         internal static System.Drawing.Bitmap InShot_20240430_190859433 {
             get {
                 object obj = ResourceManager.GetObject("InShot_20240430_190859433", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimize {
+            get {
+                object obj = ResourceManager.GetObject("minimize", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

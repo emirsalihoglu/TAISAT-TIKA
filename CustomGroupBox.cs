@@ -14,22 +14,11 @@ namespace TAISAT
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint(e);
-
-            // Kenarlık rengini çizme
+            // Kenarlıkları görünmez yapmak için Graphics nesnesini kullanarak GroupBox çizimini iptal edin
             e.Graphics.Clear(this.BackColor);
 
-            using (Pen pen = new Pen(BorderColor))
-            {
-                Size tSize = TextRenderer.MeasureText(this.Text, this.Font);
-                Rectangle borderRect = new Rectangle(0, tSize.Height / 2, this.Width - 1, this.Height - tSize.Height / 2 - 1);
-
-                // Kenarlığı çizme
-                e.Graphics.DrawRectangle(pen, borderRect);
-
-                // Başlığı çizme
-                e.Graphics.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), new Point(6, 0));
-            }
+            // Text'i manuel olarak çiz
+            TextRenderer.DrawText(e.Graphics, this.Text, this.Font, new Point(6, 0), this.ForeColor);
         }
     }
 }

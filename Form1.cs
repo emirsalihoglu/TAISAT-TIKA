@@ -63,12 +63,24 @@ namespace TAISAT
             Button[] batteryButtons = { buttonP1, buttonP2, buttonP3, buttonP4, buttonP5, buttonP6 };
             CustomButton.SetButtonColors(batteryButtons, Color.LimeGreen, Color.White);
             buttonAcKapat.BackColor = Color.FromArgb(200, 16, 46);
+            buttonClose.BackColor = Color.FromArgb(255, 96, 92);
+            buttonMinimize.BackColor = Color.FromArgb(0, 202, 78);
+            buttonMaximize.BackColor = Color.FromArgb(255, 189, 68);
 
             CustomButton.SetButtonMouseEvents(directionButtons, Color.FromArgb(54, 57, 63), Color.FromArgb(64, 68, 75));
             CustomButton.SetButtonMouseEvents(batteryButtons, Color.LimeGreen, Color.Green);
             buttonAcKapat.FlatAppearance.MouseDownBackColor = Color.Red;
             buttonAcKapat.FlatAppearance.MouseOverBackColor = Color.Red;
+            buttonClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 96, 92);
+            buttonClose.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 96, 92);
+            buttonMaximize.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 189, 68);
+            buttonMaximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 189, 68);
+            buttonMinimize.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 202, 78);
+            buttonMinimize.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 202, 78);
 
+            //Header Panel:
+            headerPanel.MouseDown += HeaderPanel_MouseDown;
+            headerPanel.MouseMove += HeaderPanel_MouseMove;
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -84,7 +96,7 @@ namespace TAISAT
         {
             labelSaat.Text = DateTime.Now.ToString("HH:mm:ss");
         }
-        
+
 
         //Port:
         private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -290,8 +302,39 @@ namespace TAISAT
                 MessageBox.Show("Bağlantı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
 
 
+        //Header:
+        private bool dragging = false;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
+
+        private void HeaderPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragging = true;
+            dragCursorPoint = Cursor.Position;
+            dragFormPoint = this.Location;
+        }
+
+        private void HeaderPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
+                this.Location = Point.Add(dragFormPoint, new Size(dif));
+            }
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+            dragging = false;
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
-    #endregion
 }
