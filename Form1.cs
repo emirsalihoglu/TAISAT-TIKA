@@ -6,8 +6,6 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Windows.Forms;
 using WebSocketSharp;
-using Newtonsoft.Json;
-
 namespace TAISAT
 {
     public partial class TAAV : Form
@@ -15,7 +13,10 @@ namespace TAISAT
         private SerialPort port;
         private bool isGreen = true;
         private bool isWhite = true;
+        private bool isStarted = true;
         private WebSocket ws;
+        private System.Timers.Timer messageTimer;
+        private string currentMessage;
         string rosBridgeUrl = "ws://simple-websocket-server-echo.glitch.me/"; //ROS Server IP'sine göre özelleştirilecek.
 
         public TAAV()
@@ -34,8 +35,6 @@ namespace TAISAT
             }
         }
 
-
-        #region Methods
         //Form Load and Form Closing:
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -63,24 +62,11 @@ namespace TAISAT
             Button[] batteryButtons = { buttonP1, buttonP2, buttonP3, buttonP4, buttonP5, buttonP6 };
             CustomButton.SetButtonColors(batteryButtons, Color.LimeGreen, Color.White);
             buttonAcKapat.BackColor = Color.FromArgb(200, 16, 46);
-            buttonClose.BackColor = Color.FromArgb(255, 96, 92);
-            buttonMinimize.BackColor = Color.FromArgb(0, 202, 78);
-            buttonMaximize.BackColor = Color.FromArgb(255, 189, 68);
 
             CustomButton.SetButtonMouseEvents(directionButtons, Color.FromArgb(54, 57, 63), Color.FromArgb(64, 68, 75));
             CustomButton.SetButtonMouseEvents(batteryButtons, Color.LimeGreen, Color.Green);
             buttonAcKapat.FlatAppearance.MouseDownBackColor = Color.Red;
             buttonAcKapat.FlatAppearance.MouseOverBackColor = Color.Red;
-            buttonClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 96, 92);
-            buttonClose.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 96, 92);
-            buttonMaximize.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 189, 68);
-            buttonMaximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 189, 68);
-            buttonMinimize.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 202, 78);
-            buttonMinimize.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 202, 78);
-
-            //Header Panel:
-            headerPanel.MouseDown += HeaderPanel_MouseDown;
-            headerPanel.MouseMove += HeaderPanel_MouseMove;
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -144,19 +130,40 @@ namespace TAISAT
         {
             OtonomKontrol();
         }
-        private void buttonIleri_Click(object sender, EventArgs e) //İstenilen mesaj ayarlanacak. Bu bir örnek.
+        private void buttonAcKapat_Click(object sender, EventArgs e)
         {
-            if (ws != null && ws.IsAlive)
-            {
-                string rosMessage = "{ \"op\": \"publish\", \"topic\": \"/your_topic\", \"msg\": { \"data\": \"Hello, ROS!\" } }";
-                ws.Send(rosMessage);
-                MessageBox.Show("Sent: " + rosMessage);
-            }
-            else
-            {
-                MessageBox.Show("WebSocket connection is not open.");
-            }
+            AracAcKapat();
         }
+        private void buttonIleri_Click(object sender, EventArgs e)
+        {
+            SendRosMessage("ileri");
+        }
+        private void buttonSol_Click(object sender, EventArgs e)
+        {
+            SendRosMessage("sol");
+        }
+        private void buttonGeri_Click(object sender, EventArgs e)
+        {
+            SendRosMessage("geri");
+        }
+        private void buttonSag_Click(object sender, EventArgs e)
+        {
+            SendRosMessage("sag");
+        }
+        private void buttonDur_Click(object sender, EventArgs e)
+        {
+            SendRosMessage("dur");
+        }
+
+        private void buttonCapaIndır_Click(object sender, EventArgs e)
+        {
+            SendRosMessage("capa indir");
+        }
+        private void buttonCapaKaldir_Click(object sender, EventArgs e)
+        {
+            SendRosMessage("capa kaldir");
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             WebSocket();
@@ -215,16 +222,23 @@ namespace TAISAT
                     ZoomOut();
                     break;
                 case Keys.W:
-                    buttonIleri.BackColor = Color.Red;
+                    buttonIleri.PerformClick();
+                    buttonIleri.BackColor = Color.White;
                     break;
                 case Keys.A:
-                    buttonSol.BackColor = Color.Red;
+                    buttonSol.PerformClick();
+                    buttonSol.BackColor = Color.White;
                     break;
                 case Keys.S:
-                    buttonGeri.BackColor = Color.Red;
+                    buttonGeri.PerformClick();
+                    buttonGeri.BackColor = Color.White;
                     break;
                 case Keys.D:
-                    buttonSag.BackColor = Color.Red;
+                    buttonSag.PerformClick();
+                    buttonSag.BackColor = Color.White;
+                    break;
+                case Keys.Space:
+                    buttonDur.PerformClick();
                     break;
             }
         }
@@ -236,16 +250,16 @@ namespace TAISAT
                     OtonomKontrol();
                     break;
                 case Keys.W:
-                    buttonIleri.BackColor = Color.White;
+                    buttonIleri.BackColor = Color.FromArgb(54, 57, 63);
                     break;
                 case Keys.A:
-                    buttonSol.BackColor = Color.White;
+                    buttonSol.BackColor = Color.FromArgb(54, 57, 63);
                     break;
                 case Keys.S:
-                    buttonGeri.BackColor = Color.White;
+                    buttonGeri.BackColor = Color.FromArgb(54, 57, 63);
                     break;
                 case Keys.D:
-                    buttonSag.BackColor = Color.White;
+                    buttonSag.BackColor = Color.FromArgb(54, 57, 63);
                     break;
             }
         }
@@ -258,13 +272,30 @@ namespace TAISAT
             {
                 labelOtonomKontrol.BackColor = Color.Red;
                 labelOtonomKontrol.Text = "KAPALI";
+                SendRosMessage("otonom kapat");
+
             }
             else
             {
                 labelOtonomKontrol.BackColor = Color.ForestGreen;
                 labelOtonomKontrol.Text = "AÇIK";
+                SendRosMessage("otonom ac");
             }
             isGreen = !isGreen;
+        }
+
+
+        //Start-Stop:
+        private void AracAcKapat()
+        {
+            if (isStarted)
+            {
+                SendRosMessage("arac kapat");
+            }
+            else
+            {
+                SendRosMessage("arac ac");
+            }
         }
 
 
@@ -302,39 +333,21 @@ namespace TAISAT
                 MessageBox.Show("Bağlantı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
 
 
-        //Header:
-        private bool dragging = false;
-        private Point dragCursorPoint;
-        private Point dragFormPoint;
-
-        private void HeaderPanel_MouseDown(object sender, MouseEventArgs e)
+        //Ros Message:
+        private void SendRosMessage(string data)
         {
-            dragging = true;
-            dragCursorPoint = Cursor.Position;
-            dragFormPoint = this.Location;
-        }
-
-        private void HeaderPanel_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (dragging)
+            if (ws != null && ws.IsAlive)
             {
-                Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
-                this.Location = Point.Add(dragFormPoint, new Size(dif));
+                string rosMessage = "{ \"op\": \"publish\", \"topic\": \"/your_topic\", \"msg\": { \"data\": \"" + data + "\" } }";
+                ws.Send(rosMessage);
+                MessageBox.Show("Sent: " + rosMessage);
             }
-        }
-
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            base.OnMouseUp(e);
-            dragging = false;
-        }
-
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            else
+            {
+                MessageBox.Show("WebSocket connection is not open.");
+            }
         }
     }
 }

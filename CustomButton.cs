@@ -49,6 +49,7 @@ public class CustomButton : Button
         button.FlatAppearance.MouseOverBackColor = Color.FromArgb(54, 57, 63);
         button.FlatAppearance.BorderColor = Color.FromArgb(32, 34, 37);
         button.Cursor = Cursors.Hand;
+        button.ForeColor = Color.White;
     }
 
     private static void ApplyCustomColors(Button button, Color backColor, Color foreColor)
