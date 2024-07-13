@@ -68,7 +68,7 @@
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.labelBitkiAdi = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBitki = new System.Windows.Forms.PictureBox();
             this.labelBitki = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.labelSaat = new System.Windows.Forms.Label();
@@ -145,7 +145,7 @@
             this.tableLayoutPanel22.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBitki)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel16.SuspendLayout();
@@ -263,26 +263,26 @@
             // 
             this.labelEgimY.AutoSize = true;
             this.labelEgimY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelEgimY.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelEgimY.Font = new System.Drawing.Font("Bahnschrift SemiBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelEgimY.ForeColor = System.Drawing.Color.White;
             this.labelEgimY.Location = new System.Drawing.Point(373, 0);
             this.labelEgimY.Name = "labelEgimY";
             this.labelEgimY.Size = new System.Drawing.Size(365, 66);
             this.labelEgimY.TabIndex = 8;
-            this.labelEgimY.Text = "80";
+            this.labelEgimY.Text = "20";
             this.labelEgimY.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelEgimX
             // 
             this.labelEgimX.AutoSize = true;
             this.labelEgimX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelEgimX.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelEgimX.Font = new System.Drawing.Font("Bahnschrift SemiBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelEgimX.ForeColor = System.Drawing.Color.White;
             this.labelEgimX.Location = new System.Drawing.Point(3, 0);
             this.labelEgimX.Name = "labelEgimX";
             this.labelEgimX.Size = new System.Drawing.Size(364, 66);
             this.labelEgimX.TabIndex = 7;
-            this.labelEgimX.Text = "25";
+            this.labelEgimX.Text = "-55";
             this.labelEgimX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBoxEgimX
@@ -697,7 +697,7 @@
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel15.Controls.Add(this.tableLayoutPanel17, 1, 0);
-            this.tableLayoutPanel15.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.pictureBoxBitki, 0, 0);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 40);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
@@ -747,14 +747,14 @@
             this.labelBitkiAdi.Text = "BİTKİ ADI";
             this.labelBitkiAdi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // pictureBoxBitki
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(228, 173);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxBitki.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxBitki.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxBitki.Name = "pictureBoxBitki";
+            this.pictureBoxBitki.Size = new System.Drawing.Size(228, 173);
+            this.pictureBoxBitki.TabIndex = 1;
+            this.pictureBoxBitki.TabStop = false;
             // 
             // labelBitki
             // 
@@ -1631,7 +1631,7 @@
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel17.ResumeLayout(false);
             this.tableLayoutPanel17.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBitki)).EndInit();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1757,7 +1757,7 @@
         private GMap.NET.WindowsForms.GMapControl map;
         private System.Windows.Forms.Label labelBitkiAdi;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxBitki;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label labelEgimY;
         private System.Windows.Forms.Label labelEgimX;

@@ -85,6 +85,8 @@ namespace TAISAT
             {
                 originalImageY = new Bitmap(pictureBoxEgimY.Image);
             }
+
+            Angle();
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -421,27 +423,20 @@ namespace TAISAT
             if (originalImage == null)
                 return;
 
-            // Orijinal resmi yeniden yükle
             pictureBox.Image = new Bitmap(originalImage);
 
-            // Yeni bir Bitmap nesnesi oluştur
             Bitmap newImage = new Bitmap(originalImage.Width, originalImage.Height);
 
-            // Graphics nesnesi oluştur
             using (Graphics g = Graphics.FromImage(newImage))
             {
-                // Graphics nesnesinin döndürüleceği merkezi nokta
                 g.TranslateTransform((float)originalImage.Width / 2, (float)originalImage.Height / 2);
 
-                // Resmi belirtilen açı kadar döndür
                 g.RotateTransform(angle);
 
-                // Resmi çiz
                 g.TranslateTransform(-(float)originalImage.Width / 2, -(float)originalImage.Height / 2);
                 g.DrawImage(originalImage, new Point(0, 0));
             }
 
-            // Yeni resmi PictureBox'a ata
             pictureBox.Image = newImage;
         }
         private void Angle()
