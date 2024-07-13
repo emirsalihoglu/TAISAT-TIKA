@@ -4,6 +4,7 @@ using GMap.NET.WindowsForms.Markers;
 using System;
 using System.Drawing;
 using System.IO.Ports;
+using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 using WebSocketSharp;
 namespace TAISAT
@@ -15,14 +16,17 @@ namespace TAISAT
         private bool isWhite = true;
         private bool isStarted = true;
         private WebSocket ws;
+        private bool isWsConnected = false;
         private System.Timers.Timer messageTimer;
         private string currentMessage;
         string rosBridgeUrl = "ws://simple-websocket-server-echo.glitch.me/"; //ROS Server IP'sine göre özelleştirilecek.
+        private string latitude;
+        private string longitude;
 
         public TAAV()
         {
             InitializeComponent();
-            port = new SerialPort("COM3", 9600);
+            port = new SerialPort("COM3", 9600); 
             port.DataReceived += Port_DataReceived;
 
             try
@@ -90,7 +94,31 @@ namespace TAISAT
             string data = port.ReadLine();
             Invoke(new Action(() =>
             {
-                richTextBox2.AppendText(data + Environment.NewLine);
+                string[] dataArray = data.Split(',');
+                if (dataArray.Length >= 7) //veri sayısına göre değiştirilecek.
+                {
+                    /*
+                    label1.Text = dataArray[0];
+                    label2.Text = dataArray[1];
+                    label3.Text = dataArray[2];
+                    label4.Text = dataArray[3];
+                    label5.Text = dataArray[4];
+                    label6.Text = dataArray[5];
+                    label7.Text = dataArray[6];
+                    
+                    latitude = dataArray[7];
+                    Lat.Text = dataArray[7];
+
+                    longitude = dataArray[8];
+                    Long.Text = dataArray[8];
+                    
+                    Harita();
+                    */
+                }
+                else
+                {
+                    MessageBox.Show("Yeterli veri alınamadı.");
+                }
             }));
         }
 
@@ -153,6 +181,11 @@ namespace TAISAT
         private void buttonDur_Click(object sender, EventArgs e)
         {
             SendRosMessage("dur");
+            latitude = " 40.7381";
+            Lat.Text = " 40.7381";
+
+            longitude = "30.0001";
+            Long.Text = "30.0001";
         }
 
         private void buttonCapaIndır_Click(object sender, EventArgs e)
@@ -164,9 +197,16 @@ namespace TAISAT
             SendRosMessage("capa kaldir");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonWebSocket_Click(object sender, EventArgs e)
         {
-            WebSocket();
+            if (isWsConnected)
+            {
+                CloseWebSocket();
+            }
+            else
+            {
+                OpenWebSocket();
+            }
         }
 
 
@@ -174,20 +214,17 @@ namespace TAISAT
         private void Harita()
         {
             map.MapProvider = GMapProviders.GoogleMap;
-            double lat = Convert.ToDouble(Lat.Text);
-            double lon = Convert.ToDouble(Long.Text);
+            double lat = Convert.ToDouble(latitude);
+            double lon = Convert.ToDouble(longitude);
             map.Position = new GMap.NET.PointLatLng(lat, lon);
             map.Zoom = 19;
             map.MinZoom = 5;
             map.MaxZoom = 100;
-
             GMap.NET.PointLatLng point = new GMap.NET.PointLatLng(lat, lon);
             GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
-
             GMapOverlay markers = new GMapOverlay("markers");
-            markers.Markers.Add(marker);
-            map.Overlays.Add(markers);
         }
+
         private void ZoomIn()
         {
             if (map.Zoom < map.MaxZoom)
@@ -299,19 +336,21 @@ namespace TAISAT
         }
 
 
-        //WebSocket:
-        private void WebSocket()
+        //Open WebSocket:
+        private void OpenWebSocket()
         {
             ws = new WebSocket(rosBridgeUrl);
 
             ws.OnOpen += (sender, e) =>
             {
                 MessageBox.Show("ROSBridge sunucusuna bağlantı başarılı.");
+                isWsConnected = true;
             };
 
             ws.OnError += (sender, e) =>
             {
                 MessageBox.Show("Bağlantı hatası: " + e.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isWsConnected = false;
             };
 
             ws.OnMessage += (sender, e) =>
@@ -322,6 +361,7 @@ namespace TAISAT
             ws.OnClose += (sender, e) =>
             {
                 MessageBox.Show("Bağlantı kapatıldı.");
+                isWsConnected = false;
             };
 
             try
@@ -331,6 +371,18 @@ namespace TAISAT
             catch (Exception ex)
             {
                 MessageBox.Show("Bağlantı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isWsConnected = false;
+            }
+        }
+
+
+        //Close WebSocket:
+        private void CloseWebSocket()
+        {
+            if (ws != null && isWsConnected)
+            {
+                ws.Close();
+                isWsConnected = false;
             }
         }
 

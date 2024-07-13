@@ -48,8 +48,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelKontrolSistemi = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBoxMessages = new System.Windows.Forms.ListBox();
             this.buttonIleri = new System.Windows.Forms.Button();
             this.buttonSol = new System.Windows.Forms.Button();
             this.buttonSag = new System.Windows.Forms.Button();
@@ -59,6 +57,7 @@
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonCapaKaldir = new System.Windows.Forms.Button();
             this.buttonCapaIndır = new System.Windows.Forms.Button();
+            this.buttonWebSocket = new System.Windows.Forms.Button();
             this.tableLayoutPanelC2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
@@ -107,17 +106,20 @@
             this.tableLayoutPanelC3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.map = new GMap.NET.WindowsForms.GMapControl();
             this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonZoomOut = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Lat = new System.Windows.Forms.Label();
             this.Long = new System.Windows.Forms.Label();
             this.buttonZoomIn = new System.Windows.Forms.Button();
+            this.map = new GMap.NET.WindowsForms.GMapControl();
             this.labelHarita = new System.Windows.Forms.Label();
             this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
             this.labelKamera = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelBitkiAdi = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelC1.SuspendLayout();
             this.tableLayoutPanel23.SuspendLayout();
@@ -134,6 +136,7 @@
             this.tableLayoutPanelC2.SuspendLayout();
             this.tableLayoutPanel22.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
@@ -153,6 +156,7 @@
             this.tableLayoutPanel24.SuspendLayout();
             this.tableLayoutPanel25.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // timerSaat
@@ -410,8 +414,6 @@
             this.tableLayoutPanelKontrolSistemi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelKontrolSistemi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanelKontrolSistemi.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanelKontrolSistemi.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanelKontrolSistemi.Controls.Add(this.listBoxMessages, 2, 0);
             this.tableLayoutPanelKontrolSistemi.Controls.Add(this.buttonIleri, 1, 0);
             this.tableLayoutPanelKontrolSistemi.Controls.Add(this.buttonSol, 0, 1);
             this.tableLayoutPanelKontrolSistemi.Controls.Add(this.buttonSag, 2, 1);
@@ -427,24 +429,6 @@
             this.tableLayoutPanelKontrolSistemi.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelKontrolSistemi.Size = new System.Drawing.Size(543, 361);
             this.tableLayoutPanelKontrolSistemi.TabIndex = 17;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // listBoxMessages
-            // 
-            this.listBoxMessages.FormattingEnabled = true;
-            this.listBoxMessages.Location = new System.Drawing.Point(364, 3);
-            this.listBoxMessages.Name = "listBoxMessages";
-            this.listBoxMessages.Size = new System.Drawing.Size(120, 82);
-            this.listBoxMessages.TabIndex = 5;
             // 
             // buttonIleri
             // 
@@ -544,17 +528,18 @@
             // tableLayoutPanel13
             // 
             this.tableLayoutPanel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            this.tableLayoutPanel13.ColumnCount = 2;
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.ColumnCount = 3;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel13.Controls.Add(this.buttonCapaKaldir, 1, 0);
             this.tableLayoutPanel13.Controls.Add(this.buttonCapaIndır, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.buttonWebSocket, 2, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 432);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 1;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(741, 102);
             this.tableLayoutPanel13.TabIndex = 1;
             // 
@@ -569,9 +554,9 @@
             this.buttonCapaKaldir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCapaKaldir.Font = new System.Drawing.Font("Bahnschrift SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.buttonCapaKaldir.ForeColor = System.Drawing.Color.White;
-            this.buttonCapaKaldir.Location = new System.Drawing.Point(373, 3);
+            this.buttonCapaKaldir.Location = new System.Drawing.Point(250, 3);
             this.buttonCapaKaldir.Name = "buttonCapaKaldir";
-            this.buttonCapaKaldir.Size = new System.Drawing.Size(365, 96);
+            this.buttonCapaKaldir.Size = new System.Drawing.Size(241, 96);
             this.buttonCapaKaldir.TabIndex = 1;
             this.buttonCapaKaldir.Text = "ÇAPA KALDIR";
             this.buttonCapaKaldir.UseVisualStyleBackColor = false;
@@ -590,11 +575,24 @@
             this.buttonCapaIndır.ForeColor = System.Drawing.Color.White;
             this.buttonCapaIndır.Location = new System.Drawing.Point(3, 3);
             this.buttonCapaIndır.Name = "buttonCapaIndır";
-            this.buttonCapaIndır.Size = new System.Drawing.Size(364, 96);
+            this.buttonCapaIndır.Size = new System.Drawing.Size(241, 96);
             this.buttonCapaIndır.TabIndex = 0;
             this.buttonCapaIndır.Text = "ÇAPA İNDİR";
             this.buttonCapaIndır.UseVisualStyleBackColor = false;
             this.buttonCapaIndır.Click += new System.EventHandler(this.buttonCapaIndır_Click);
+            // 
+            // buttonWebSocket
+            // 
+            this.buttonWebSocket.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonWebSocket.FlatAppearance.BorderSize = 3;
+            this.buttonWebSocket.Font = new System.Drawing.Font("Bahnschrift SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonWebSocket.Location = new System.Drawing.Point(497, 3);
+            this.buttonWebSocket.Name = "buttonWebSocket";
+            this.buttonWebSocket.Size = new System.Drawing.Size(241, 96);
+            this.buttonWebSocket.TabIndex = 5;
+            this.buttonWebSocket.Text = "WEB SOCKET";
+            this.buttonWebSocket.UseVisualStyleBackColor = true;
+            this.buttonWebSocket.Click += new System.EventHandler(this.buttonWebSocket_Click);
             // 
             // tableLayoutPanelC2
             // 
@@ -638,6 +636,7 @@
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel15.Controls.Add(this.tableLayoutPanel17, 1, 0);
+            this.tableLayoutPanel15.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 40);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
@@ -650,6 +649,8 @@
             // 
             this.tableLayoutPanel17.ColumnCount = 1;
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.Controls.Add(this.label13, 0, 1);
+            this.tableLayoutPanel17.Controls.Add(this.labelBitkiAdi, 0, 0);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel17.Location = new System.Drawing.Point(237, 3);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
@@ -817,6 +818,7 @@
             this.buttonBaslat.TabIndex = 0;
             this.buttonBaslat.Text = "BAŞLAT";
             this.buttonBaslat.UseVisualStyleBackColor = true;
+            this.buttonBaslat.Click += new System.EventHandler(this.buttonBaslat_Click);
             // 
             // buttonDurdur
             // 
@@ -833,6 +835,7 @@
             this.buttonDurdur.TabIndex = 1;
             this.buttonDurdur.Text = "DURDUR";
             this.buttonDurdur.UseVisualStyleBackColor = true;
+            this.buttonDurdur.Click += new System.EventHandler(this.buttonDurdur_Click);
             // 
             // tableLayoutPanel11
             // 
@@ -1283,8 +1286,8 @@
             // 
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Controls.Add(this.map, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel24, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.map, 0, 1);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 41);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -1293,33 +1296,6 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.5F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(742, 465);
             this.tableLayoutPanel8.TabIndex = 3;
-            // 
-            // map
-            // 
-            this.map.Bearing = 0F;
-            this.map.CanDragMap = true;
-            this.map.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.map.EmptyTileColor = System.Drawing.Color.Navy;
-            this.map.GrayScaleMode = false;
-            this.map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.map.LevelsKeepInMemmory = 5;
-            this.map.Location = new System.Drawing.Point(3, 61);
-            this.map.MarkersEnabled = true;
-            this.map.MaxZoom = 2;
-            this.map.MinZoom = 2;
-            this.map.MouseWheelZoomEnabled = true;
-            this.map.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.map.Name = "map";
-            this.map.NegativeMode = false;
-            this.map.PolygonsEnabled = true;
-            this.map.RetryLoadTile = 0;
-            this.map.RoutesEnabled = true;
-            this.map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
-            this.map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.map.ShowTileGridLines = false;
-            this.map.Size = new System.Drawing.Size(736, 401);
-            this.map.TabIndex = 2;
-            this.map.Zoom = 0D;
             // 
             // tableLayoutPanel24
             // 
@@ -1357,6 +1333,7 @@
             this.buttonZoomOut.TabIndex = 9;
             this.buttonZoomOut.Text = "-";
             this.buttonZoomOut.UseVisualStyleBackColor = true;
+            this.buttonZoomOut.Click += new System.EventHandler(this.buttonZoomOut_Click);
             // 
             // button2
             // 
@@ -1375,6 +1352,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "HARİTA YÜKLE";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.buttonHarita_Click);
             // 
             // Lat
             // 
@@ -1386,7 +1364,7 @@
             this.Lat.Name = "Lat";
             this.Lat.Size = new System.Drawing.Size(141, 52);
             this.Lat.TabIndex = 6;
-            this.Lat.Text = "40.74284603826509";
+            this.Lat.Text = "48.858093";
             this.Lat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Long
@@ -1399,7 +1377,7 @@
             this.Long.Name = "Long";
             this.Long.Size = new System.Drawing.Size(141, 52);
             this.Long.TabIndex = 7;
-            this.Long.Text = "29.94181627267979";
+            this.Long.Text = "2.294694";
             this.Long.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonZoomIn
@@ -1417,6 +1395,34 @@
             this.buttonZoomIn.TabIndex = 8;
             this.buttonZoomIn.Text = "+";
             this.buttonZoomIn.UseVisualStyleBackColor = true;
+            this.buttonZoomIn.Click += new System.EventHandler(this.buttonZoomIn_Click);
+            // 
+            // map
+            // 
+            this.map.Bearing = 0F;
+            this.map.CanDragMap = true;
+            this.map.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.map.EmptyTileColor = System.Drawing.Color.Navy;
+            this.map.GrayScaleMode = false;
+            this.map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.map.LevelsKeepInMemmory = 5;
+            this.map.Location = new System.Drawing.Point(3, 61);
+            this.map.MarkersEnabled = true;
+            this.map.MaxZoom = 2;
+            this.map.MinZoom = 2;
+            this.map.MouseWheelZoomEnabled = true;
+            this.map.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.map.Name = "map";
+            this.map.NegativeMode = false;
+            this.map.PolygonsEnabled = true;
+            this.map.RetryLoadTile = 0;
+            this.map.RoutesEnabled = true;
+            this.map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.map.ShowTileGridLines = false;
+            this.map.Size = new System.Drawing.Size(736, 401);
+            this.map.TabIndex = 4;
+            this.map.Zoom = 0D;
             // 
             // labelHarita
             // 
@@ -1473,6 +1479,41 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1904, 1041);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // labelBitkiAdi
+            // 
+            this.labelBitkiAdi.AutoSize = true;
+            this.labelBitkiAdi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelBitkiAdi.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBitkiAdi.ForeColor = System.Drawing.Color.White;
+            this.labelBitkiAdi.Location = new System.Drawing.Point(3, 0);
+            this.labelBitkiAdi.Name = "labelBitkiAdi";
+            this.labelBitkiAdi.Size = new System.Drawing.Size(115, 51);
+            this.labelBitkiAdi.TabIndex = 0;
+            this.labelBitkiAdi.Text = "BİTKİ ADI";
+            this.labelBitkiAdi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(3, 51);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(115, 122);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "ALGILANAN BİTKİNİN KONUMU";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(228, 173);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // TAAV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1509,6 +1550,8 @@
             this.tableLayoutPanel22.ResumeLayout(false);
             this.tableLayoutPanel22.PerformLayout();
             this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel17.ResumeLayout(false);
+            this.tableLayoutPanel17.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel16.ResumeLayout(false);
@@ -1539,6 +1582,7 @@
             this.tableLayoutPanel25.ResumeLayout(false);
             this.tableLayoutPanel25.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1547,9 +1591,6 @@
         private System.Windows.Forms.Timer timerSaat;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelC1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel23;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
-        private System.Windows.Forms.Label labelEgim;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelC1_L1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1C1_L1_L1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -1568,9 +1609,6 @@
         private System.Windows.Forms.Button buttonGeri;
         private System.Windows.Forms.Button buttonDur;
         private System.Windows.Forms.Label labelKontrolSistemi;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.Button buttonCapaKaldir;
-        private System.Windows.Forms.Button buttonCapaIndır;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelC2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
@@ -1609,13 +1647,10 @@
         private System.Windows.Forms.Label labelAracBilgileri;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelC3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBoxMessages;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel25;
         private System.Windows.Forms.Label labelKamera;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel26;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private GMap.NET.WindowsForms.GMapControl map;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel24;
         private System.Windows.Forms.Button buttonZoomOut;
         private System.Windows.Forms.Button button2;
@@ -1632,6 +1667,17 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
         private System.Windows.Forms.ComboBox comboBoxPort;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonWebSocket;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel23;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Label labelEgim;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.Button buttonCapaKaldir;
+        private System.Windows.Forms.Button buttonCapaIndır;
+        private GMap.NET.WindowsForms.GMapControl map;
+        private System.Windows.Forms.Label labelBitkiAdi;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
