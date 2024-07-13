@@ -22,6 +22,9 @@ namespace TAISAT
         string rosBridgeUrl = "ws://simple-websocket-server-echo.glitch.me/"; //ROS Server IP'sine göre özelleştirilecek.
         private string latitude;
         private string longitude;
+        private Image originalImageX;
+        private Image originalImageY;
+
 
         public TAAV()
         {
@@ -71,6 +74,17 @@ namespace TAISAT
             CustomButton.SetButtonMouseEvents(batteryButtons, Color.LimeGreen, Color.Green);
             buttonAcKapat.FlatAppearance.MouseDownBackColor = Color.Red;
             buttonAcKapat.FlatAppearance.MouseOverBackColor = Color.Red;
+
+            //Image Angle Reset:
+            if (pictureBoxEgimX.Image != null)
+            {
+                originalImageX = new Bitmap(pictureBoxEgimX.Image);
+            }
+
+            if (pictureBoxEgimY.Image != null)
+            {
+                originalImageY = new Bitmap(pictureBoxEgimY.Image);
+            }
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -98,21 +112,24 @@ namespace TAISAT
                 if (dataArray.Length >= 7) //veri sayısına göre değiştirilecek.
                 {
                     /*
-                    label1.Text = dataArray[0];
-                    label2.Text = dataArray[1];
-                    label3.Text = dataArray[2];
-                    label4.Text = dataArray[3];
-                    label5.Text = dataArray[4];
-                    label6.Text = dataArray[5];
-                    label7.Text = dataArray[6];
-                    
-                    latitude = dataArray[7];
-                    Lat.Text = dataArray[7];
-
-                    longitude = dataArray[8];
-                    Long.Text = dataArray[8];
+                    latitude = dataArray[0];
+                    Lat.Text = dataArray[0];
+                    longitude = dataArray[1];
+                    Long.Text = dataArray[1];
+                    labelHiz.Text = dataArray[2];
+                    labelMesafe.Text = dataArray[3];
+                    buttonP1.Text = dataArray[4];
+                    buttonP2.Text = dataArray[5];
+                    buttonP3.Text = dataArray[6];
+                    buttonP4.Text = dataArray[7];
+                    buttonP5.Text = dataArray[8];
+                    buttonP6.Text = dataArray[9];
+                    labelBatarya.Text = dataArray[10];
+                    labelEgimX.Text = dataArray[11];
+                    labelEgimY.Text = dataArray[12];
                     
                     Harita();
+                    Angle();
                     */
                 }
                 else
@@ -181,11 +198,6 @@ namespace TAISAT
         private void buttonDur_Click(object sender, EventArgs e)
         {
             SendRosMessage("dur");
-            latitude = " 40.7381";
-            Lat.Text = " 40.7381";
-
-            longitude = "30.0001";
-            Long.Text = "30.0001";
         }
 
         private void buttonCapaIndır_Click(object sender, EventArgs e)
@@ -399,6 +411,50 @@ namespace TAISAT
             else
             {
                 MessageBox.Show("WebSocket connection is not open.");
+            }
+        }
+
+
+        //Angle:
+        private void RotateImage(PictureBox pictureBox, Image originalImage, float angle)
+        {
+            if (originalImage == null)
+                return;
+
+            // Orijinal resmi yeniden yükle
+            pictureBox.Image = new Bitmap(originalImage);
+
+            // Yeni bir Bitmap nesnesi oluştur
+            Bitmap newImage = new Bitmap(originalImage.Width, originalImage.Height);
+
+            // Graphics nesnesi oluştur
+            using (Graphics g = Graphics.FromImage(newImage))
+            {
+                // Graphics nesnesinin döndürüleceği merkezi nokta
+                g.TranslateTransform((float)originalImage.Width / 2, (float)originalImage.Height / 2);
+
+                // Resmi belirtilen açı kadar döndür
+                g.RotateTransform(angle);
+
+                // Resmi çiz
+                g.TranslateTransform(-(float)originalImage.Width / 2, -(float)originalImage.Height / 2);
+                g.DrawImage(originalImage, new Point(0, 0));
+            }
+
+            // Yeni resmi PictureBox'a ata
+            pictureBox.Image = newImage;
+        }
+        private void Angle()
+        {
+            if (double.TryParse(labelEgimX.Text, out double xAngle) &&
+                double.TryParse(labelEgimY.Text, out double yAngle))
+            {
+                RotateImage(pictureBoxEgimX, originalImageX, (float)xAngle);
+                RotateImage(pictureBoxEgimY, originalImageY, (float)yAngle);
+            }
+            else
+            {
+                MessageBox.Show("Lütfen geçerli sayısal bir değer girin.");
             }
         }
     }

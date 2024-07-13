@@ -35,6 +35,10 @@
             this.tableLayoutPanelC1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxEgimY = new System.Windows.Forms.PictureBox();
+            this.labelEgimY = new System.Windows.Forms.Label();
+            this.labelEgimX = new System.Windows.Forms.Label();
+            this.pictureBoxEgimX = new System.Windows.Forms.PictureBox();
             this.labelEgim = new System.Windows.Forms.Label();
             this.tableLayoutPanelC1_L1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1C1_L1_L1 = new System.Windows.Forms.TableLayoutPanel();
@@ -62,9 +66,13 @@
             this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.labelBitkiAdi = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelBitki = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.labelSaat = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
             this.labelPort = new System.Windows.Forms.Label();
@@ -96,12 +104,12 @@
             this.buttonP2 = new System.Windows.Forms.Button();
             this.buttonP1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelBatarya = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.labelHiz = new System.Windows.Forms.Label();
+            this.labelMesafe = new System.Windows.Forms.Label();
             this.labelAracBilgileri = new System.Windows.Forms.Label();
             this.tableLayoutPanelC3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
@@ -117,12 +125,12 @@
             this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
             this.labelKamera = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelBitkiAdi = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelC1.SuspendLayout();
             this.tableLayoutPanel23.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEgimY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEgimX)).BeginInit();
             this.tableLayoutPanelC1_L1.SuspendLayout();
             this.tableLayoutPanel1C1_L1_L1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -137,7 +145,9 @@
             this.tableLayoutPanel22.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel16.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -156,7 +166,6 @@
             this.tableLayoutPanel24.SuspendLayout();
             this.tableLayoutPanel25.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // timerSaat
@@ -225,6 +234,10 @@
             this.tableLayoutPanel14.ColumnCount = 2;
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Controls.Add(this.pictureBoxEgimY, 1, 1);
+            this.tableLayoutPanel14.Controls.Add(this.labelEgimY, 1, 0);
+            this.tableLayoutPanel14.Controls.Add(this.labelEgimX, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.pictureBoxEgimX, 0, 1);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 60);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
@@ -234,6 +247,54 @@
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel14.Size = new System.Drawing.Size(741, 417);
             this.tableLayoutPanel14.TabIndex = 3;
+            // 
+            // pictureBoxEgimY
+            // 
+            this.pictureBoxEgimY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxEgimY.Image = global::TAISAT.Properties.Resources.arac_yan_removebg_preview;
+            this.pictureBoxEgimY.Location = new System.Drawing.Point(373, 69);
+            this.pictureBoxEgimY.Name = "pictureBoxEgimY";
+            this.pictureBoxEgimY.Size = new System.Drawing.Size(365, 345);
+            this.pictureBoxEgimY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEgimY.TabIndex = 10;
+            this.pictureBoxEgimY.TabStop = false;
+            // 
+            // labelEgimY
+            // 
+            this.labelEgimY.AutoSize = true;
+            this.labelEgimY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEgimY.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelEgimY.ForeColor = System.Drawing.Color.White;
+            this.labelEgimY.Location = new System.Drawing.Point(373, 0);
+            this.labelEgimY.Name = "labelEgimY";
+            this.labelEgimY.Size = new System.Drawing.Size(365, 66);
+            this.labelEgimY.TabIndex = 8;
+            this.labelEgimY.Text = "80";
+            this.labelEgimY.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelEgimX
+            // 
+            this.labelEgimX.AutoSize = true;
+            this.labelEgimX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEgimX.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelEgimX.ForeColor = System.Drawing.Color.White;
+            this.labelEgimX.Location = new System.Drawing.Point(3, 0);
+            this.labelEgimX.Name = "labelEgimX";
+            this.labelEgimX.Size = new System.Drawing.Size(364, 66);
+            this.labelEgimX.TabIndex = 7;
+            this.labelEgimX.Text = "25";
+            this.labelEgimX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBoxEgimX
+            // 
+            this.pictureBoxEgimX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxEgimX.Image = global::TAISAT.Properties.Resources.arac_on_removebg_preview;
+            this.pictureBoxEgimX.Location = new System.Drawing.Point(3, 69);
+            this.pictureBoxEgimX.Name = "pictureBoxEgimX";
+            this.pictureBoxEgimX.Size = new System.Drawing.Size(364, 345);
+            this.pictureBoxEgimX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEgimX.TabIndex = 9;
+            this.pictureBoxEgimX.TabStop = false;
             // 
             // labelEgim
             // 
@@ -660,6 +721,41 @@
             this.tableLayoutPanel17.Size = new System.Drawing.Size(121, 173);
             this.tableLayoutPanel17.TabIndex = 0;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(3, 51);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(115, 122);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "ALGILANAN BİTKİNİN KONUMU";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelBitkiAdi
+            // 
+            this.labelBitkiAdi.AutoSize = true;
+            this.labelBitkiAdi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelBitkiAdi.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBitkiAdi.ForeColor = System.Drawing.Color.White;
+            this.labelBitkiAdi.Location = new System.Drawing.Point(3, 0);
+            this.labelBitkiAdi.Name = "labelBitkiAdi";
+            this.labelBitkiAdi.Size = new System.Drawing.Size(115, 51);
+            this.labelBitkiAdi.TabIndex = 0;
+            this.labelBitkiAdi.Text = "BİTKİ ADI";
+            this.labelBitkiAdi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(228, 173);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // labelBitki
             // 
             this.labelBitki.AutoSize = true;
@@ -678,6 +774,7 @@
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.Controls.Add(this.labelSaat, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.pictureBox2, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
@@ -699,6 +796,19 @@
             this.labelSaat.Size = new System.Drawing.Size(361, 32);
             this.labelSaat.TabIndex = 0;
             this.labelSaat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.ErrorImage = null;
+            this.pictureBox2.Image = global::TAISAT.Properties.Resources.logo;
+            this.pictureBox2.InitialImage = null;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(361, 79);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // tableLayoutPanel16
             // 
@@ -959,7 +1069,7 @@
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel7, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label8, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.labelBatarya, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -1159,19 +1269,19 @@
             this.label2.Text = "S1";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label8
+            // labelBatarya
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(3, 111);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(349, 28);
-            this.label8.TabIndex = 2;
-            this.label8.Text = " GENEL BATARYA: 25.2";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelBatarya.AutoSize = true;
+            this.labelBatarya.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.labelBatarya.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelBatarya.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelBatarya.ForeColor = System.Drawing.Color.White;
+            this.labelBatarya.Location = new System.Drawing.Point(3, 111);
+            this.labelBatarya.Name = "labelBatarya";
+            this.labelBatarya.Size = new System.Drawing.Size(349, 28);
+            this.labelBatarya.TabIndex = 2;
+            this.labelBatarya.Text = " GENEL BATARYA: 25.2";
+            this.labelBatarya.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel10
             // 
@@ -1181,8 +1291,8 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.Controls.Add(this.label11, 0, 1);
             this.tableLayoutPanel10.Controls.Add(this.label9, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.label10, 1, 0);
-            this.tableLayoutPanel10.Controls.Add(this.label12, 1, 1);
+            this.tableLayoutPanel10.Controls.Add(this.labelHiz, 1, 0);
+            this.tableLayoutPanel10.Controls.Add(this.labelMesafe, 1, 1);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 148);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
@@ -1216,25 +1326,25 @@
             this.label9.Text = "HIZ:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label10
+            // labelHiz
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label10.Location = new System.Drawing.Point(180, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 19);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "m/s";
+            this.labelHiz.AutoSize = true;
+            this.labelHiz.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelHiz.Location = new System.Drawing.Point(180, 0);
+            this.labelHiz.Name = "labelHiz";
+            this.labelHiz.Size = new System.Drawing.Size(37, 19);
+            this.labelHiz.TabIndex = 3;
+            this.labelHiz.Text = "m/s";
             // 
-            // label12
+            // labelMesafe
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(180, 21);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(23, 19);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "m";
+            this.labelMesafe.AutoSize = true;
+            this.labelMesafe.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelMesafe.Location = new System.Drawing.Point(180, 21);
+            this.labelMesafe.Name = "labelMesafe";
+            this.labelMesafe.Size = new System.Drawing.Size(23, 19);
+            this.labelMesafe.TabIndex = 4;
+            this.labelMesafe.Text = "m";
             // 
             // labelAracBilgileri
             // 
@@ -1475,44 +1585,9 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1041F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1904, 1041);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // labelBitkiAdi
-            // 
-            this.labelBitkiAdi.AutoSize = true;
-            this.labelBitkiAdi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelBitkiAdi.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBitkiAdi.ForeColor = System.Drawing.Color.White;
-            this.labelBitkiAdi.Location = new System.Drawing.Point(3, 0);
-            this.labelBitkiAdi.Name = "labelBitkiAdi";
-            this.labelBitkiAdi.Size = new System.Drawing.Size(115, 51);
-            this.labelBitkiAdi.TabIndex = 0;
-            this.labelBitkiAdi.Text = "BİTKİ ADI";
-            this.labelBitkiAdi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(3, 51);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(115, 122);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "ALGILANAN BİTKİNİN KONUMU";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(228, 173);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // TAAV
             // 
@@ -1534,6 +1609,10 @@
             this.tableLayoutPanelC1.ResumeLayout(false);
             this.tableLayoutPanel23.ResumeLayout(false);
             this.tableLayoutPanel23.PerformLayout();
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEgimY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEgimX)).EndInit();
             this.tableLayoutPanelC1_L1.ResumeLayout(false);
             this.tableLayoutPanel1C1_L1_L1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -1552,8 +1631,10 @@
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel17.ResumeLayout(false);
             this.tableLayoutPanel17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel20.ResumeLayout(false);
             this.tableLayoutPanel20.PerformLayout();
@@ -1582,7 +1663,6 @@
             this.tableLayoutPanel25.ResumeLayout(false);
             this.tableLayoutPanel25.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1638,12 +1718,12 @@
         private System.Windows.Forms.Button buttonP2;
         private System.Windows.Forms.Button buttonP1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelBatarya;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelHiz;
+        private System.Windows.Forms.Label labelMesafe;
         private System.Windows.Forms.Label labelAracBilgileri;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelC3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -1678,6 +1758,11 @@
         private System.Windows.Forms.Label labelBitkiAdi;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label labelEgimY;
+        private System.Windows.Forms.Label labelEgimX;
+        private System.Windows.Forms.PictureBox pictureBoxEgimY;
+        private System.Windows.Forms.PictureBox pictureBoxEgimX;
     }
 }
 

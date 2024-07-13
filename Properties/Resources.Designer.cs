@@ -83,6 +83,16 @@ namespace TAISAT.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arac_on_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("arac_on-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arac_on1 {
             get {
                 object obj = ResourceManager.GetObject("arac_on1", resourceCulture);
@@ -96,6 +106,16 @@ namespace TAISAT.Properties {
         internal static System.Drawing.Bitmap arac_yan {
             get {
                 object obj = ResourceManager.GetObject("arac_yan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arac_yan_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("arac_yan-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +196,16 @@ namespace TAISAT.Properties {
         internal static System.Drawing.Bitmap InShot_20240430_190859433 {
             get {
                 object obj = ResourceManager.GetObject("InShot_20240430_190859433", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo {
+            get {
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

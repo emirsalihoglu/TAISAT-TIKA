@@ -29,3 +29,7 @@ C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\rosbridge_client_socket_f
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\websocket-sharp.dll
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\Newtonsoft.Json.xml
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.TAAV.resources
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\TAISAT.exe.manifest
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\TAISAT.application
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.exe.manifest
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.application
