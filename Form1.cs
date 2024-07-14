@@ -1,7 +1,10 @@
-﻿using GMap.NET.MapProviders;
+﻿using AForge.Video;
+using AForge.Video.DirectShow;
+using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO.Ports;
 using System.Runtime.Remoting.Contexts;
@@ -25,10 +28,42 @@ namespace TAISAT
         private Image originalImageX;
         private Image originalImageY;
 
+        private List<double> valuesX; //**
+        private List<double> valuesY; //**
+        private int currentIndex; //**
+        private bool timerStarted; //**
+
 
         public TAAV()
         {
             InitializeComponent();
+
+            timerX.Interval = 1000;
+            timerX.Tick += TimerX_Tick;
+
+            // Değişkenleri başlat
+            currentIndex = 0;
+            timerStarted = false;
+
+            // Timer'ı başlatma işlemi için bir zamanlayıcı ayarla (30 saniye bekleyecek)
+            Timer startupTimer = new Timer();
+            startupTimer.Interval = 30000; // 30 saniye
+            startupTimer.Tick += (sender, e) =>
+            {
+                startupTimer.Stop();
+                timerX.Start();
+                timerStarted = true;
+            };
+            startupTimer.Start();
+
+            valuesX = new List<double> { 1.0, 1.2, 1.8, 1.6, 1.4, 2.0, 2.2, 2.4, 2.6, 2.8 };
+            valuesY = new List<double> { 0.4, 0.2, 0.6, 0.8, 1.0, 0.8, 1.2, 1.0, 1.4, 1.6 };
+            currentIndex = 0;
+
+            timerX.Start();
+            buttonAcKapat.Click += buttonAcKapat_Click;
+
+
             port = new SerialPort("COM3", 9600); 
             port.DataReceived += Port_DataReceived;
 
@@ -42,9 +77,37 @@ namespace TAISAT
             }
         }
 
+
+        private FilterInfoCollection videoDevices;
+        private VideoCaptureDevice videoSource;
+        private void ListCameras()
+        {
+            // VideoCaptureDevice sınıfından mevcut kamera aygıtlarını alın
+            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+
+            // ComboBox'a kameraları ekleyin
+            foreach (FilterInfo device in videoDevices)
+            {
+                comboBox1.Items.Add(device.Name);
+            }
+
+            // Eğer kamera bulunmuşsa, ilkini seçin
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show("Kamera bulunamadı!");
+            }
+        }
+
         //Form Load and Form Closing:
         private void Form1_Load(object sender, EventArgs e)
         {
+            ListCameras();
+
+
             //Timer:
             timerSaat.Start();
             this.KeyDown += Form1_KeyDown;
@@ -94,7 +157,45 @@ namespace TAISAT
             {
                 ws.Close();
             }
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                videoSource.SignalToStop();
+                videoSource.WaitForStop();
+            }
         }
+
+
+
+
+        //VIDEO
+        private void TimerX_Tick(object sender, EventArgs e)
+        {
+            if (timerStarted)
+            {
+                labelEgimX.Text = valuesX[currentIndex].ToString();
+                labelEgimY.Text = valuesY[currentIndex].ToString();
+                labelHiz.Text = "0.3 m/s";
+                labelMesafe.Text = "1 m/s";
+
+                currentIndex = (currentIndex + 1) % valuesX.Count;
+
+                Angle();
+            }
+        }
+
+
+        private void ResetSpecifiedLabels()
+        {
+            labelEgimX.Text = "0";
+            labelEgimY.Text = "0";
+            Lat.Text = "0";
+            Long.Text = "0";
+            labelHiz.Text = "0 m/s";
+            labelMesafe.Text = "0 m/s";
+        }
+        //VIDEO
+
+
 
 
         //Timer:
@@ -179,7 +280,11 @@ namespace TAISAT
         }
         private void buttonAcKapat_Click(object sender, EventArgs e)
         {
+            timerX.Stop();
+
             AracAcKapat();
+
+            ResetSpecifiedLabels();
         }
         private void buttonIleri_Click(object sender, EventArgs e)
         {
@@ -228,8 +333,8 @@ namespace TAISAT
         private void Harita()
         {
             map.MapProvider = GMapProviders.GoogleMap;
-            double lat = Convert.ToDouble(latitude);
-            double lon = Convert.ToDouble(longitude);
+            double lat = Convert.ToDouble(Lat.Text);
+            double lon = Convert.ToDouble(Long.Text);
             map.Position = new GMap.NET.PointLatLng(lat, lon);
             map.Zoom = 19;
             map.MinZoom = 5;
@@ -339,6 +444,7 @@ namespace TAISAT
         //Start-Stop:
         private void AracAcKapat()
         {
+            /*
             if (isStarted)
             {
                 SendRosMessage("arac kapat");
@@ -347,6 +453,7 @@ namespace TAISAT
             {
                 SendRosMessage("arac ac");
             }
+            */
         }
 
 
@@ -451,6 +558,46 @@ namespace TAISAT
             {
                 MessageBox.Show("Lütfen geçerli sayısal bir değer girin.");
             }
+        }
+
+        private void videoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            // Yeni çerçeve alındığında PictureBox'a görüntüyü gösterin
+            Bitmap frame = (Bitmap)eventArgs.Frame.Clone();
+            pictureBox1.Image = frame;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Eğer bir video kaynağı zaten çalışıyorsa, durdurun
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                videoSource.Stop();
+                pictureBox1.Image = null;
+            }
+
+            // Yeni kamera seçildiğinde video kaynağını başlatın
+            videoSource = new VideoCaptureDevice(videoDevices[comboBox1.SelectedIndex].MonikerString);
+
+            // Kameranın desteklediği çözünürlükleri alın
+            VideoCapabilities[] videoCapabilities = videoSource.VideoCapabilities;
+
+            // En yüksek çözünürlüğü seçin
+            VideoCapabilities highestResolution = videoCapabilities[0];
+            foreach (VideoCapabilities cap in videoCapabilities)
+            {
+                if (cap.FrameSize.Width * cap.FrameSize.Height > highestResolution.FrameSize.Width * highestResolution.FrameSize.Height)
+                {
+                    highestResolution = cap;
+                }
+            }
+
+            // Seçilen çözünürlüğü ayarla
+            videoSource.VideoResolution = highestResolution;
+
+            // Video akışını başlatın
+            videoSource.NewFrame += new NewFrameEventHandler(videoSource_NewFrame);
+            videoSource.Start();
         }
     }
 }

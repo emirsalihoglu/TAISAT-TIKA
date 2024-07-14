@@ -33,3 +33,9 @@ C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\TAISAT.exe.manifest
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\TAISAT.application
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.exe.manifest
 C:\Users\memir\source\repos\tika\TAISAT-TIKA\obj\Debug\TAISAT.application
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\AForge.dll
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\AForge.Video.dll
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\AForge.xml
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\AForge.Video.xml
+C:\Users\memir\source\repos\tika\TAISAT-TIKA\bin\Debug\AForge.Video.DirectShow.xml

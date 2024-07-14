@@ -7,14 +7,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="TAISAT.exe.manifest" size="9131">
+    <dependentAssembly dependencyType="install" codebase="TAISAT.exe.manifest" size="11169">
       <assemblyIdentity name="TAISAT.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NcQjzklqxyT1KBE1E9fXIn06mL7as8nVlwQu1VSJogI=</dsig:DigestValue>
+        <dsig:DigestValue>LTWlD9aQEaAfxU7Vu3umudFkzXk+1UTo+9OHvz/Tr8E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

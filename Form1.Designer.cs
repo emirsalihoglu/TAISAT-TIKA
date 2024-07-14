@@ -116,7 +116,7 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonZoomOut = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonHarita = new System.Windows.Forms.Button();
             this.Lat = new System.Windows.Forms.Label();
             this.Long = new System.Windows.Forms.Label();
             this.buttonZoomIn = new System.Windows.Forms.Button();
@@ -125,6 +125,11 @@
             this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
             this.labelKamera = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.timerX = new System.Windows.Forms.Timer(this.components);
+            this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timerStartupTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelC1.SuspendLayout();
             this.tableLayoutPanel23.SuspendLayout();
@@ -166,6 +171,8 @@
             this.tableLayoutPanel24.SuspendLayout();
             this.tableLayoutPanel25.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel27.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // timerSaat
@@ -269,7 +276,7 @@
             this.labelEgimY.Name = "labelEgimY";
             this.labelEgimY.Size = new System.Drawing.Size(365, 66);
             this.labelEgimY.TabIndex = 8;
-            this.labelEgimY.Text = "20";
+            this.labelEgimY.Text = "0";
             this.labelEgimY.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelEgimX
@@ -282,7 +289,7 @@
             this.labelEgimX.Name = "labelEgimX";
             this.labelEgimX.Size = new System.Drawing.Size(364, 66);
             this.labelEgimX.TabIndex = 7;
-            this.labelEgimX.Text = "-55";
+            this.labelEgimX.Text = "0";
             this.labelEgimX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBoxEgimX
@@ -1187,7 +1194,7 @@
             this.buttonP6.Name = "buttonP6";
             this.buttonP6.Size = new System.Drawing.Size(53, 62);
             this.buttonP6.TabIndex = 5;
-            this.buttonP6.Text = "4.2";
+            this.buttonP6.Text = "3.8";
             this.buttonP6.UseVisualStyleBackColor = false;
             // 
             // buttonP5
@@ -1200,7 +1207,7 @@
             this.buttonP5.Name = "buttonP5";
             this.buttonP5.Size = new System.Drawing.Size(52, 62);
             this.buttonP5.TabIndex = 4;
-            this.buttonP5.Text = "4.2";
+            this.buttonP5.Text = "3.7";
             this.buttonP5.UseVisualStyleBackColor = false;
             // 
             // buttonP4
@@ -1213,7 +1220,7 @@
             this.buttonP4.Name = "buttonP4";
             this.buttonP4.Size = new System.Drawing.Size(52, 62);
             this.buttonP4.TabIndex = 3;
-            this.buttonP4.Text = "4.2";
+            this.buttonP4.Text = "3.7";
             this.buttonP4.UseVisualStyleBackColor = false;
             // 
             // buttonP3
@@ -1226,7 +1233,7 @@
             this.buttonP3.Name = "buttonP3";
             this.buttonP3.Size = new System.Drawing.Size(52, 62);
             this.buttonP3.TabIndex = 2;
-            this.buttonP3.Text = "4.2";
+            this.buttonP3.Text = "3.7";
             this.buttonP3.UseVisualStyleBackColor = false;
             // 
             // buttonP2
@@ -1239,7 +1246,7 @@
             this.buttonP2.Name = "buttonP2";
             this.buttonP2.Size = new System.Drawing.Size(52, 62);
             this.buttonP2.TabIndex = 1;
-            this.buttonP2.Text = "4.2";
+            this.buttonP2.Text = "3.8";
             this.buttonP2.UseVisualStyleBackColor = false;
             // 
             // buttonP1
@@ -1252,7 +1259,7 @@
             this.buttonP1.Name = "buttonP1";
             this.buttonP1.Size = new System.Drawing.Size(52, 62);
             this.buttonP1.TabIndex = 0;
-            this.buttonP1.Text = "4.2";
+            this.buttonP1.Text = "3.7";
             this.buttonP1.UseVisualStyleBackColor = false;
             // 
             // label2
@@ -1280,7 +1287,7 @@
             this.labelBatarya.Name = "labelBatarya";
             this.labelBatarya.Size = new System.Drawing.Size(349, 28);
             this.labelBatarya.TabIndex = 2;
-            this.labelBatarya.Text = " GENEL BATARYA: 25.2";
+            this.labelBatarya.Text = " GENEL BATARYA: 22.4";
             this.labelBatarya.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel10
@@ -1332,9 +1339,9 @@
             this.labelHiz.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelHiz.Location = new System.Drawing.Point(180, 0);
             this.labelHiz.Name = "labelHiz";
-            this.labelHiz.Size = new System.Drawing.Size(37, 19);
+            this.labelHiz.Size = new System.Drawing.Size(50, 19);
             this.labelHiz.TabIndex = 3;
-            this.labelHiz.Text = "m/s";
+            this.labelHiz.Text = "0 m/s";
             // 
             // labelMesafe
             // 
@@ -1342,9 +1349,9 @@
             this.labelMesafe.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelMesafe.Location = new System.Drawing.Point(180, 21);
             this.labelMesafe.Name = "labelMesafe";
-            this.labelMesafe.Size = new System.Drawing.Size(23, 19);
+            this.labelMesafe.Size = new System.Drawing.Size(36, 19);
             this.labelMesafe.TabIndex = 4;
-            this.labelMesafe.Text = "m";
+            this.labelMesafe.Text = "0 m";
             // 
             // labelAracBilgileri
             // 
@@ -1416,7 +1423,7 @@
             this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel24.Controls.Add(this.buttonZoomOut, 4, 0);
-            this.tableLayoutPanel24.Controls.Add(this.button2, 0, 0);
+            this.tableLayoutPanel24.Controls.Add(this.buttonHarita, 0, 0);
             this.tableLayoutPanel24.Controls.Add(this.Lat, 1, 0);
             this.tableLayoutPanel24.Controls.Add(this.Long, 2, 0);
             this.tableLayoutPanel24.Controls.Add(this.buttonZoomIn, 3, 0);
@@ -1445,24 +1452,24 @@
             this.buttonZoomOut.UseVisualStyleBackColor = true;
             this.buttonZoomOut.Click += new System.EventHandler(this.buttonZoomOut_Click);
             // 
-            // button2
+            // buttonHarita
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.button2.FlatAppearance.BorderSize = 2;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(0, 2);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(147, 47);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "HARİTA YÜKLE";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.buttonHarita_Click);
+            this.buttonHarita.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonHarita.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.buttonHarita.FlatAppearance.BorderSize = 2;
+            this.buttonHarita.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.buttonHarita.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.buttonHarita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHarita.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonHarita.ForeColor = System.Drawing.Color.White;
+            this.buttonHarita.Location = new System.Drawing.Point(0, 2);
+            this.buttonHarita.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonHarita.Name = "buttonHarita";
+            this.buttonHarita.Size = new System.Drawing.Size(147, 47);
+            this.buttonHarita.TabIndex = 5;
+            this.buttonHarita.Text = "HARİTA YÜKLE";
+            this.buttonHarita.UseVisualStyleBackColor = true;
+            this.buttonHarita.Click += new System.EventHandler(this.buttonHarita_Click);
             // 
             // Lat
             // 
@@ -1474,7 +1481,7 @@
             this.Lat.Name = "Lat";
             this.Lat.Size = new System.Drawing.Size(141, 52);
             this.Lat.TabIndex = 6;
-            this.Lat.Text = "48.858093";
+            this.Lat.Text = "40.744217";
             this.Lat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Long
@@ -1487,7 +1494,7 @@
             this.Long.Name = "Long";
             this.Long.Size = new System.Drawing.Size(141, 52);
             this.Long.TabIndex = 7;
-            this.Long.Text = "2.294694";
+            this.Long.Text = "29.941508";
             this.Long.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonZoomIn
@@ -1553,6 +1560,7 @@
             this.tableLayoutPanel25.ColumnCount = 1;
             this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel25.Controls.Add(this.labelKamera, 0, 0);
+            this.tableLayoutPanel25.Controls.Add(this.tableLayoutPanel27, 0, 1);
             this.tableLayoutPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel25.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel25.Name = "tableLayoutPanel25";
@@ -1588,6 +1596,40 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1041F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1904, 1041);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel27
+            // 
+            this.tableLayoutPanel27.ColumnCount = 1;
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel27.Controls.Add(this.comboBox1, 0, 0);
+            this.tableLayoutPanel27.Controls.Add(this.pictureBox1, 0, 1);
+            this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel27.Location = new System.Drawing.Point(3, 63);
+            this.tableLayoutPanel27.Name = "tableLayoutPanel27";
+            this.tableLayoutPanel27.RowCount = 2;
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.823529F));
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.17647F));
+            this.tableLayoutPanel27.Size = new System.Drawing.Size(742, 442);
+            this.tableLayoutPanel27.TabIndex = 2;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(3, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(736, 21);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 42);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(736, 397);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // TAAV
             // 
@@ -1663,6 +1705,8 @@
             this.tableLayoutPanel25.ResumeLayout(false);
             this.tableLayoutPanel25.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel27.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1733,7 +1777,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel24;
         private System.Windows.Forms.Button buttonZoomOut;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonHarita;
         private System.Windows.Forms.Label Lat;
         private System.Windows.Forms.Label Long;
         private System.Windows.Forms.Button buttonZoomIn;
@@ -1763,6 +1807,11 @@
         private System.Windows.Forms.Label labelEgimX;
         private System.Windows.Forms.PictureBox pictureBoxEgimY;
         private System.Windows.Forms.PictureBox pictureBoxEgimX;
+        private System.Windows.Forms.Timer timerX;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel27;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timerStartupTimer;
     }
 }
 
