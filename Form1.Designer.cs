@@ -124,11 +124,11 @@
             this.labelHarita = new System.Windows.Forms.Label();
             this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
             this.labelKamera = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.timerX = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.timerX = new System.Windows.Forms.Timer(this.components);
             this.timerStartupTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelC1.SuspendLayout();
@@ -170,9 +170,9 @@
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel24.SuspendLayout();
             this.tableLayoutPanel25.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel27.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // timerSaat
@@ -500,13 +500,13 @@
             // 
             // buttonIleri
             // 
-            this.buttonIleri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.buttonIleri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.buttonIleri.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonIleri.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
             this.buttonIleri.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.buttonIleri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.buttonIleri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonIleri.Image = ((System.Drawing.Image)(resources.GetObject("buttonIleri.Image")));
+            this.buttonIleri.Image = global::TAISAT.Properties.Resources.icons_up;
             this.buttonIleri.Location = new System.Drawing.Point(183, 3);
             this.buttonIleri.Name = "buttonIleri";
             this.buttonIleri.Size = new System.Drawing.Size(175, 114);
@@ -516,13 +516,13 @@
             // 
             // buttonSol
             // 
-            this.buttonSol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.buttonSol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.buttonSol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
             this.buttonSol.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.buttonSol.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.buttonSol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSol.Image = ((System.Drawing.Image)(resources.GetObject("buttonSol.Image")));
+            this.buttonSol.Image = global::TAISAT.Properties.Resources.icons_left;
             this.buttonSol.Location = new System.Drawing.Point(3, 123);
             this.buttonSol.Name = "buttonSol";
             this.buttonSol.Size = new System.Drawing.Size(174, 114);
@@ -532,13 +532,13 @@
             // 
             // buttonSag
             // 
-            this.buttonSag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.buttonSag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.buttonSag.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSag.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
             this.buttonSag.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.buttonSag.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.buttonSag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSag.Image = ((System.Drawing.Image)(resources.GetObject("buttonSag.Image")));
+            this.buttonSag.Image = global::TAISAT.Properties.Resources.icons_right;
             this.buttonSag.Location = new System.Drawing.Point(364, 123);
             this.buttonSag.Name = "buttonSag";
             this.buttonSag.Size = new System.Drawing.Size(176, 114);
@@ -548,13 +548,13 @@
             // 
             // buttonGeri
             // 
-            this.buttonGeri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.buttonGeri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.buttonGeri.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonGeri.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
             this.buttonGeri.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.buttonGeri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.buttonGeri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGeri.Image = ((System.Drawing.Image)(resources.GetObject("buttonGeri.Image")));
+            this.buttonGeri.Image = global::TAISAT.Properties.Resources.icons_down;
             this.buttonGeri.Location = new System.Drawing.Point(183, 243);
             this.buttonGeri.Name = "buttonGeri";
             this.buttonGeri.Size = new System.Drawing.Size(175, 115);
@@ -1583,20 +1583,6 @@
             this.labelKamera.Text = "KAMERA";
             this.labelKamera.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanelMain, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1041F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1904, 1041);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
             // tableLayoutPanel27
             // 
             this.tableLayoutPanel27.ColumnCount = 1;
@@ -1630,6 +1616,20 @@
             this.pictureBox1.Size = new System.Drawing.Size(736, 397);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanelMain, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1041F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1904, 1041);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // TAAV
             // 
@@ -1704,9 +1704,9 @@
             this.tableLayoutPanel24.PerformLayout();
             this.tableLayoutPanel25.ResumeLayout(false);
             this.tableLayoutPanel25.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel27.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
