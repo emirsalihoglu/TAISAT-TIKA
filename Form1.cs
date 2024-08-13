@@ -70,7 +70,6 @@ namespace TAISAT
         {
             ListCameras();
 
-
             //Timer:
             timerSaat.Start();
             this.KeyDown += Form1_KeyDown;
@@ -100,6 +99,8 @@ namespace TAISAT
             CustomButton.SetButtonMouseEvents(batteryButtons, Color.LimeGreen, Color.Green);
             buttonAcKapat.FlatAppearance.MouseDownBackColor = Color.Red;
             buttonAcKapat.FlatAppearance.MouseOverBackColor = Color.Red;
+
+            UpdateButtonColors();//Buradan kaldırılacak port kısmında uygulanacak.
 
             //Image Angle Reset:
             if (pictureBoxEgimX.Image != null)
@@ -163,6 +164,7 @@ namespace TAISAT
                     
                     Harita();
                     Angle();
+                    UpdateButtonColors();
                     */
                 }
                 else
@@ -212,21 +214,37 @@ namespace TAISAT
         {
             AracAcKapat();
         }
-        private void buttonIleri_Click(object sender, EventArgs e)
+        private void buttonIleri_MouseDown(object sender, MouseEventArgs e)
         {
             SendRosMessage("ileri");
         }
-        private void buttonSol_Click(object sender, EventArgs e)
+        private void buttonIleri_MouseUp(object sender, MouseEventArgs e)
+        {
+            SendRosMessage("ileriKes");
+        }
+        private void buttonSol_MouseDown(object sender, MouseEventArgs e)
         {
             SendRosMessage("sol");
         }
-        private void buttonGeri_Click(object sender, EventArgs e)
+        private void buttonSol_MouseUp(object sender, MouseEventArgs e)
+        {
+            SendRosMessage("solKes");
+        }
+        private void buttonGeri_MouseDown(object sender, MouseEventArgs e)
         {
             SendRosMessage("geri");
         }
-        private void buttonSag_Click(object sender, EventArgs e)
+        private void buttonGeri_MouseUp(object sender, MouseEventArgs e)
+        {
+            SendRosMessage("geriKes");
+        }
+        private void buttonSag_MouseDown(object sender, MouseEventArgs e)
         {
             SendRosMessage("sag");
+        }
+        private void buttonSag_MouseUp(object sender, MouseEventArgs e)
+        {
+            SendRosMessage("sagKes");
         }
         private void buttonDur_Click(object sender, EventArgs e)
         {
@@ -516,6 +534,28 @@ namespace TAISAT
 
             videoSource.NewFrame += new NewFrameEventHandler(videoSource_NewFrame);
             videoSource.Start();
+        }
+
+
+        //Button Color Update:
+        private void UpdateButtonColors()
+        {
+            Button[] buttons = { buttonP1, buttonP2, buttonP3, buttonP4, buttonP5, buttonP6 };
+
+            foreach (var button in buttons)
+            {
+                if (double.TryParse(button.Text, out double value))
+                {
+                    if (value <= 3.6)
+                    {
+                        button.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        button.BackColor = Color.LimeGreen;
+                    }
+                }
+            }
         }
     }
 }

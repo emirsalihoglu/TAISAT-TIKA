@@ -138,14 +138,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TAISAT.exe" size="2687968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TAISAT.exe" size="2688992">
       <assemblyIdentity name="TAISAT" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2/xwB2dAvkRafwqh+auJA0bd02rwUi6Px8/3AkPs26s=</dsig:DigestValue>
+        <dsig:DigestValue>vWIPvk6ZGZTF7mVRqb7bRVZeT3KpG53+cg+QFzoK1Ac=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

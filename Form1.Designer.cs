@@ -512,7 +512,8 @@
             this.buttonIleri.Size = new System.Drawing.Size(175, 114);
             this.buttonIleri.TabIndex = 0;
             this.buttonIleri.UseVisualStyleBackColor = false;
-            this.buttonIleri.Click += new System.EventHandler(this.buttonIleri_Click);
+            this.buttonIleri.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonIleri_MouseDown);
+            this.buttonIleri.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonIleri_MouseUp);
             // 
             // buttonSol
             // 
@@ -528,7 +529,8 @@
             this.buttonSol.Size = new System.Drawing.Size(174, 114);
             this.buttonSol.TabIndex = 1;
             this.buttonSol.UseVisualStyleBackColor = false;
-            this.buttonSol.Click += new System.EventHandler(this.buttonSol_Click);
+            this.buttonSol.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonSol_MouseDown);
+            this.buttonSol.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonSol_MouseUp);
             // 
             // buttonSag
             // 
@@ -544,7 +546,8 @@
             this.buttonSag.Size = new System.Drawing.Size(176, 114);
             this.buttonSag.TabIndex = 2;
             this.buttonSag.UseVisualStyleBackColor = false;
-            this.buttonSag.Click += new System.EventHandler(this.buttonSag_Click);
+            this.buttonSag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonSag_MouseDown);
+            this.buttonSag.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonSag_MouseUp);
             // 
             // buttonGeri
             // 
@@ -560,7 +563,8 @@
             this.buttonGeri.Size = new System.Drawing.Size(175, 115);
             this.buttonGeri.TabIndex = 3;
             this.buttonGeri.UseVisualStyleBackColor = false;
-            this.buttonGeri.Click += new System.EventHandler(this.buttonGeri_Click);
+            this.buttonGeri.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonGeri_MouseDown);
+            this.buttonGeri.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonGeri_MouseUp);
             // 
             // buttonDur
             // 
@@ -1259,7 +1263,7 @@
             this.buttonP1.Name = "buttonP1";
             this.buttonP1.Size = new System.Drawing.Size(52, 62);
             this.buttonP1.TabIndex = 0;
-            this.buttonP1.Text = "3.7";
+            this.buttonP1.Text = "3.5";
             this.buttonP1.UseVisualStyleBackColor = false;
             // 
             // label2
