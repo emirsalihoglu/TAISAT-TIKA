@@ -1,5 +1,6 @@
 ﻿using AForge.Video;
 using AForge.Video.DirectShow;
+using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
@@ -18,6 +19,7 @@ namespace TAISAT
         private bool isGreen = true;
         private bool isWhite = true;
         private bool isStarted = true;
+        private bool isMapActive = false;
         private WebSocket ws;
         private bool isWsConnected = false;
         string rosBridgeUrl = "ws://simple-websocket-server-echo.glitch.me/"; //ROS Server IP'sine göre özelleştirilecek.
@@ -196,7 +198,18 @@ namespace TAISAT
         }
         private void buttonHarita_Click(object sender, EventArgs e)
         {
-            Harita();
+            isMapActive = !isMapActive;
+
+            if (isMapActive)
+            {
+                timerX.Start(); //(Test) Teste bağlı olarak timer üzerinden ayarlandı fakat daha sonra porttan bilgi alınmasına uyarlanacak.
+                Harita();
+            }
+            else
+            {
+                timerX.Stop();
+                map.Overlays.Clear();
+            }
         }
         private void buttonZoomIn_Click(object sender, EventArgs e)
         {
@@ -285,6 +298,8 @@ namespace TAISAT
             GMap.NET.PointLatLng point = new GMap.NET.PointLatLng(lat, lon);
             GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
             GMapOverlay markers = new GMapOverlay("markers");
+
+            timerX.Start(); //(Test)
         }
 
         private void ZoomIn()
@@ -322,19 +337,15 @@ namespace TAISAT
                     break;
                 case Keys.W:
                     buttonIleri.PerformClick();
-                    buttonIleri.BackColor = Color.White;
                     break;
                 case Keys.A:
                     buttonSol.PerformClick();
-                    buttonSol.BackColor = Color.White;
                     break;
                 case Keys.S:
                     buttonGeri.PerformClick();
-                    buttonGeri.BackColor = Color.White;
                     break;
                 case Keys.D:
                     buttonSag.PerformClick();
-                    buttonSag.BackColor = Color.White;
                     break;
                 case Keys.Space:
                     buttonDur.PerformClick();
@@ -537,7 +548,7 @@ namespace TAISAT
         }
 
 
-        //Button Color Update:
+        //Battery Button Color Update:
         private void UpdateButtonColors()
         {
             Button[] buttons = { buttonP1, buttonP2, buttonP3, buttonP4, buttonP5, buttonP6 };
@@ -556,6 +567,34 @@ namespace TAISAT
                     }
                 }
             }
+        }
+
+
+        //Map Update (Test):
+        private void timerX_Tick(object sender, EventArgs e)
+        {
+
+            if (float.TryParse(Lat.Text, out float floatValueLat))
+            {
+                floatValueLat += 0.001f;
+                Lat.Text = floatValueLat.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Geçersiz enlem değeri.");
+            }
+
+            if (float.TryParse(Long.Text, out float floatValueLong))
+            {
+                floatValueLong += 0.001f;
+                Long.Text = floatValueLong.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Geçersiz boylam değeri.");
+            }
+
+            Harita();
         }
     }
 }

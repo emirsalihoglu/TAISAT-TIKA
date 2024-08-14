@@ -1635,6 +1635,11 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1904, 1041);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // timerX
+            // 
+            this.timerX.Interval = 2000;
+            this.timerX.Tick += new System.EventHandler(this.timerX_Tick);
+            // 
             // TAAV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
