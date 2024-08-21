@@ -64,11 +64,7 @@
             this.buttonWebSocket = new System.Windows.Forms.Button();
             this.tableLayoutPanelC2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.labelBitkiAdi = new System.Windows.Forms.Label();
-            this.pictureBoxBitki = new System.Windows.Forms.PictureBox();
+            this.richTextBoxBitki = new System.Windows.Forms.RichTextBox();
             this.labelBitki = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.labelSaat = new System.Windows.Forms.Label();
@@ -148,9 +144,6 @@
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanelC2.SuspendLayout();
             this.tableLayoutPanel22.SuspendLayout();
-            this.tableLayoutPanel15.SuspendLayout();
-            this.tableLayoutPanel17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBitki)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel16.SuspendLayout();
@@ -691,7 +684,7 @@
             this.tableLayoutPanel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.tableLayoutPanel22.ColumnCount = 1;
             this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel22.Controls.Add(this.tableLayoutPanel15, 0, 1);
+            this.tableLayoutPanel22.Controls.Add(this.richTextBoxBitki, 0, 1);
             this.tableLayoutPanel22.Controls.Add(this.labelBitki, 0, 0);
             this.tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel22.Location = new System.Drawing.Point(3, 804);
@@ -702,70 +695,19 @@
             this.tableLayoutPanel22.Size = new System.Drawing.Size(367, 222);
             this.tableLayoutPanel22.TabIndex = 16;
             // 
-            // tableLayoutPanel15
+            // richTextBoxBitki
             // 
-            this.tableLayoutPanel15.ColumnCount = 2;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel15.Controls.Add(this.tableLayoutPanel17, 1, 0);
-            this.tableLayoutPanel15.Controls.Add(this.pictureBoxBitki, 0, 0);
-            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 40);
-            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
-            this.tableLayoutPanel15.RowCount = 1;
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(361, 179);
-            this.tableLayoutPanel15.TabIndex = 14;
-            // 
-            // tableLayoutPanel17
-            // 
-            this.tableLayoutPanel17.ColumnCount = 1;
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel17.Controls.Add(this.label13, 0, 1);
-            this.tableLayoutPanel17.Controls.Add(this.labelBitkiAdi, 0, 0);
-            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(237, 3);
-            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
-            this.tableLayoutPanel17.RowCount = 2;
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(121, 173);
-            this.tableLayoutPanel17.TabIndex = 0;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(3, 51);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(115, 122);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "ALGILANAN BİTKİNİN KONUMU";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelBitkiAdi
-            // 
-            this.labelBitkiAdi.AutoSize = true;
-            this.labelBitkiAdi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelBitkiAdi.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBitkiAdi.ForeColor = System.Drawing.Color.White;
-            this.labelBitkiAdi.Location = new System.Drawing.Point(3, 0);
-            this.labelBitkiAdi.Name = "labelBitkiAdi";
-            this.labelBitkiAdi.Size = new System.Drawing.Size(115, 51);
-            this.labelBitkiAdi.TabIndex = 0;
-            this.labelBitkiAdi.Text = "BİTKİ ADI";
-            this.labelBitkiAdi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBoxBitki
-            // 
-            this.pictureBoxBitki.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxBitki.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxBitki.Name = "pictureBoxBitki";
-            this.pictureBoxBitki.Size = new System.Drawing.Size(228, 173);
-            this.pictureBoxBitki.TabIndex = 1;
-            this.pictureBoxBitki.TabStop = false;
+            this.richTextBoxBitki.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.richTextBoxBitki.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxBitki.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxBitki.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.richTextBoxBitki.ForeColor = System.Drawing.Color.White;
+            this.richTextBoxBitki.Location = new System.Drawing.Point(3, 40);
+            this.richTextBoxBitki.Name = "richTextBoxBitki";
+            this.richTextBoxBitki.ReadOnly = true;
+            this.richTextBoxBitki.Size = new System.Drawing.Size(361, 179);
+            this.richTextBoxBitki.TabIndex = 10;
+            this.richTextBoxBitki.Text = "";
             // 
             // labelBitki
             // 
@@ -1198,7 +1140,7 @@
             this.buttonP6.Name = "buttonP6";
             this.buttonP6.Size = new System.Drawing.Size(53, 62);
             this.buttonP6.TabIndex = 5;
-            this.buttonP6.Text = "3.8";
+            this.buttonP6.Text = "4.02";
             this.buttonP6.UseVisualStyleBackColor = false;
             // 
             // buttonP5
@@ -1211,7 +1153,7 @@
             this.buttonP5.Name = "buttonP5";
             this.buttonP5.Size = new System.Drawing.Size(52, 62);
             this.buttonP5.TabIndex = 4;
-            this.buttonP5.Text = "3.7";
+            this.buttonP5.Text = "4.02";
             this.buttonP5.UseVisualStyleBackColor = false;
             // 
             // buttonP4
@@ -1224,7 +1166,7 @@
             this.buttonP4.Name = "buttonP4";
             this.buttonP4.Size = new System.Drawing.Size(52, 62);
             this.buttonP4.TabIndex = 3;
-            this.buttonP4.Text = "3.7";
+            this.buttonP4.Text = "4.02";
             this.buttonP4.UseVisualStyleBackColor = false;
             // 
             // buttonP3
@@ -1237,7 +1179,7 @@
             this.buttonP3.Name = "buttonP3";
             this.buttonP3.Size = new System.Drawing.Size(52, 62);
             this.buttonP3.TabIndex = 2;
-            this.buttonP3.Text = "3.7";
+            this.buttonP3.Text = "4.02";
             this.buttonP3.UseVisualStyleBackColor = false;
             // 
             // buttonP2
@@ -1250,7 +1192,7 @@
             this.buttonP2.Name = "buttonP2";
             this.buttonP2.Size = new System.Drawing.Size(52, 62);
             this.buttonP2.TabIndex = 1;
-            this.buttonP2.Text = "3.8";
+            this.buttonP2.Text = "4.02";
             this.buttonP2.UseVisualStyleBackColor = false;
             // 
             // buttonP1
@@ -1263,7 +1205,7 @@
             this.buttonP1.Name = "buttonP1";
             this.buttonP1.Size = new System.Drawing.Size(52, 62);
             this.buttonP1.TabIndex = 0;
-            this.buttonP1.Text = "3.5";
+            this.buttonP1.Text = "4.02";
             this.buttonP1.UseVisualStyleBackColor = false;
             // 
             // label2
@@ -1291,7 +1233,7 @@
             this.labelBatarya.Name = "labelBatarya";
             this.labelBatarya.Size = new System.Drawing.Size(349, 28);
             this.labelBatarya.TabIndex = 2;
-            this.labelBatarya.Text = " GENEL BATARYA: 22.4";
+            this.labelBatarya.Text = " GENEL BATARYA: 25.2";
             this.labelBatarya.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel10
@@ -1679,10 +1621,6 @@
             this.tableLayoutPanelC2.ResumeLayout(false);
             this.tableLayoutPanel22.ResumeLayout(false);
             this.tableLayoutPanel22.PerformLayout();
-            this.tableLayoutPanel15.ResumeLayout(false);
-            this.tableLayoutPanel17.ResumeLayout(false);
-            this.tableLayoutPanel17.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBitki)).EndInit();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1744,8 +1682,6 @@
         private System.Windows.Forms.Label labelKontrolSistemi;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelC2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
         private System.Windows.Forms.Label labelBitki;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label labelSaat;
@@ -1808,9 +1744,6 @@
         private System.Windows.Forms.Button buttonCapaKaldir;
         private System.Windows.Forms.Button buttonCapaIndır;
         private GMap.NET.WindowsForms.GMapControl map;
-        private System.Windows.Forms.Label labelBitkiAdi;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.PictureBox pictureBoxBitki;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label labelEgimY;
         private System.Windows.Forms.Label labelEgimX;
@@ -1821,6 +1754,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timerStartupTimer;
+        private System.Windows.Forms.RichTextBox richTextBoxBitki;
     }
 }
 

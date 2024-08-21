@@ -10,6 +10,7 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using WebSocketSharp;
 namespace TAISAT
 {
@@ -22,15 +23,25 @@ namespace TAISAT
         private bool isMapActive = false;
         private WebSocket ws;
         private bool isWsConnected = false;
-        string rosBridgeUrl = "ws://simple-websocket-server-echo.glitch.me/"; //ROS Server IP'sine göre özelleştirilecek.
+        string rosBridgeUrl = "ws://172.20.10.4:9090"; //ROS Server IP'sine göre özelleştirilecek.
         private Image originalImageX;
         private Image originalImageY;
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
 
+        //Plant (Test):
+        private Timer simulationTimer;
+        private Random random;
+        //Plant (Test)
+
+        float xCoordinate;
+        float yCoordinate;
+
 
         public TAAV()
         {
+            InitializeSimulation();
+
             InitializeComponent();
             port = new SerialPort("COM3", 9600); 
             port.DataReceived += Port_DataReceived;
@@ -44,6 +55,18 @@ namespace TAISAT
                 MessageBox.Show("Port açılamadı: " + ex.Message);
             }
         }
+
+
+        //Plant (Test):
+        private void InitializeSimulation()
+        {
+            random = new Random();
+
+            simulationTimer = new Timer();
+            simulationTimer.Interval = 4000;
+            simulationTimer.Tick += new EventHandler(SimulationTimer_Tick);
+        }
+        //Plant (Test)
 
 
         //Camera:
@@ -163,7 +186,12 @@ namespace TAISAT
                     labelBatarya.Text = dataArray[10];
                     labelEgimX.Text = dataArray[11];
                     labelEgimY.Text = dataArray[12];
-                    
+
+                    string xCoordinate = dataArray[13];
+                    string yCoordinate = dataArray[14];
+                    string zCoordinate = dataArray[15];
+                    richTextBox1.AppendText($"X: {xCoordinate}, Y: {yCoordinate}, Z: {zCoordinate}\n");
+
                     Harita();
                     Angle();
                     UpdateButtonColors();
@@ -295,11 +323,16 @@ namespace TAISAT
             map.Zoom = 19;
             map.MinZoom = 5;
             map.MaxZoom = 100;
-            GMap.NET.PointLatLng point = new GMap.NET.PointLatLng(lat, lon);
+            PointLatLng point = new PointLatLng(xCoordinate, yCoordinate);
             GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
-            GMapOverlay markers = new GMapOverlay("markers");
+            GMapOverlay markersOverlay = new GMapOverlay("markers");
 
             timerX.Start(); //(Test)
+            simulationTimer.Start(); //(Test)
+
+            markersOverlay.Markers.Add(marker);
+            map.Overlays.Add(markersOverlay);
+            GMapMarker pointer = marker;
         }
 
         private void ZoomIn()
@@ -422,13 +455,9 @@ namespace TAISAT
 
             ws.OnError += (sender, e) =>
             {
-                MessageBox.Show("Bağlantı hatası: " + e.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"WebSocket Error: {e.Message}");
+                Console.WriteLine($"WebSocket Error: {e.Message} - {e.Exception}");
                 isWsConnected = false;
-            };
-
-            ws.OnMessage += (sender, e) =>
-            {
-                MessageBox.Show("Mesaj alındı: " + e.Data);
             };
 
             ws.OnClose += (sender, e) =>
@@ -436,6 +465,13 @@ namespace TAISAT
                 MessageBox.Show("Bağlantı kapatıldı.");
                 isWsConnected = false;
             };
+
+            ws.OnMessage += (sender, e) =>
+            {
+                MessageBox.Show("Mesaj alındı: " + e.Data);
+                
+            };
+
 
             try
             {
@@ -465,7 +501,7 @@ namespace TAISAT
         {
             if (ws != null && ws.IsAlive)
             {
-                string rosMessage = "{ \"op\": \"publish\", \"topic\": \"/your_topic\", \"msg\": { \"data\": \"" + data + "\" } }";
+                string rosMessage = "{ \"op\": \"publish\", \"topic\": \"/my_topic\", \"msg\": { \"data\": \"" + data + "\" } }";
                 ws.Send(rosMessage);
                 MessageBox.Show("Sent: " + rosMessage);
             }
@@ -595,6 +631,16 @@ namespace TAISAT
             }
 
             Harita();
+        }
+
+
+        //Plant Update (Test):
+        private void SimulationTimer_Tick(object sender, EventArgs e)
+        {
+            xCoordinate = Convert.ToSingle(Lat.Text);
+            yCoordinate = Convert.ToSingle(Long.Text);
+
+            richTextBoxBitki.AppendText($"X: {xCoordinate}, Y: {yCoordinate}\n");
         }
     }
 }
