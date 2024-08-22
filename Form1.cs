@@ -4,11 +4,13 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO.Ports;
 using System.Runtime.Remoting.Contexts;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using WebSocketSharp;
@@ -23,27 +25,16 @@ namespace TAISAT
         private bool isMapActive = false;
         private WebSocket ws;
         private bool isWsConnected = false;
-        string rosBridgeUrl = "ws://172.20.10.4:9090"; //ROS Server IP'sine göre özelleştirilecek.
+        string rosBridgeUrl = "ws://192.168.143.160:9090"; //ROS Server IP'sine göre özelleştirilecek.
         private Image originalImageX;
         private Image originalImageY;
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
 
-        //Plant (Test):
-        private Timer simulationTimer;
-        private Random random;
-        //Plant (Test)
-
-        float xCoordinate;
-        float yCoordinate;
-
-
         public TAAV()
         {
-            InitializeSimulation();
-
             InitializeComponent();
-            port = new SerialPort("COM3", 9600); 
+            port = new SerialPort("COM2", 9600);
             port.DataReceived += Port_DataReceived;
 
             try
@@ -55,18 +46,6 @@ namespace TAISAT
                 MessageBox.Show("Port açılamadı: " + ex.Message);
             }
         }
-
-
-        //Plant (Test):
-        private void InitializeSimulation()
-        {
-            random = new Random();
-
-            simulationTimer = new Timer();
-            simulationTimer.Interval = 4000;
-            simulationTimer.Tick += new EventHandler(SimulationTimer_Tick);
-        }
-        //Plant (Test)
 
 
         //Camera:
@@ -165,37 +144,29 @@ namespace TAISAT
         private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string data = port.ReadLine();
+
+            data = data.Trim('{', '}');
+
             Invoke(new Action(() =>
             {
                 string[] dataArray = data.Split(',');
-                if (dataArray.Length >= 7) //veri sayısına göre değiştirilecek.
-                {
-                    /*
-                    latitude = dataArray[0];
-                    Lat.Text = dataArray[0];
-                    longitude = dataArray[1];
-                    Long.Text = dataArray[1];
-                    labelHiz.Text = dataArray[2];
-                    labelMesafe.Text = dataArray[3];
-                    buttonP1.Text = dataArray[4];
-                    buttonP2.Text = dataArray[5];
-                    buttonP3.Text = dataArray[6];
-                    buttonP4.Text = dataArray[7];
-                    buttonP5.Text = dataArray[8];
-                    buttonP6.Text = dataArray[9];
-                    labelBatarya.Text = dataArray[10];
-                    labelEgimX.Text = dataArray[11];
-                    labelEgimY.Text = dataArray[12];
 
-                    string xCoordinate = dataArray[13];
-                    string yCoordinate = dataArray[14];
-                    string zCoordinate = dataArray[15];
-                    richTextBox1.AppendText($"X: {xCoordinate}, Y: {yCoordinate}, Z: {zCoordinate}\n");
+                if (dataArray.Length >= 4)
+                {
+                    string latitude = dataArray[0];
+                    string longitude = dataArray[1];
+                    string hiz1 = dataArray[2];
+                    string hiz2 = dataArray[3];
+
+                    Lat.Text = latitude;
+                    Long.Text = longitude;
+                    int hiz1Int = Convert.ToInt32(hiz1);
+                    int hiz2Int = Convert.ToInt32(hiz2);
+                    labelHiz.Text = Convert.ToString((hiz1Int + hiz2Int) / 2);
 
                     Harita();
                     Angle();
                     UpdateButtonColors();
-                    */
                 }
                 else
                 {
@@ -203,6 +174,7 @@ namespace TAISAT
                 }
             }));
         }
+
 
 
         //Button Click:
@@ -230,12 +202,10 @@ namespace TAISAT
 
             if (isMapActive)
             {
-                timerX.Start(); //(Test) Teste bağlı olarak timer üzerinden ayarlandı fakat daha sonra porttan bilgi alınmasına uyarlanacak.
                 Harita();
             }
             else
             {
-                timerX.Stop();
                 map.Overlays.Clear();
             }
         }
@@ -323,18 +293,17 @@ namespace TAISAT
             map.Zoom = 19;
             map.MinZoom = 5;
             map.MaxZoom = 100;
-            PointLatLng point = new PointLatLng(xCoordinate, yCoordinate);
+
+            /*PointLatLng point = new PointLatLng(xCoordinate, yCoordinate);
             GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
             GMapOverlay markersOverlay = new GMapOverlay("markers");
 
-            timerX.Start(); //(Test)
-            simulationTimer.Start(); //(Test)
-
             markersOverlay.Markers.Add(marker);
             map.Overlays.Add(markersOverlay);
-            GMapMarker pointer = marker;
-        }
+            GMapMarker pointer = marker;*/
 
+            //Bitkiler için marker.
+        }
         private void ZoomIn()
         {
             if (map.Zoom < map.MaxZoom)
@@ -369,19 +338,19 @@ namespace TAISAT
                     ZoomOut();
                     break;
                 case Keys.W:
-                    buttonIleri.PerformClick();
+                    buttonIleri_MouseDown(buttonIleri, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
                     break;
                 case Keys.A:
-                    buttonSol.PerformClick();
+                    buttonSol_MouseDown(buttonSol, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
                     break;
                 case Keys.S:
-                    buttonGeri.PerformClick();
+                    buttonGeri_MouseDown(buttonGeri, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
                     break;
                 case Keys.D:
-                    buttonSag.PerformClick();
+                    buttonSag_MouseDown(buttonSag, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
                     break;
                 case Keys.Space:
-                    buttonDur.PerformClick();
+                    buttonDur_Click(buttonDur, EventArgs.Empty);
                     break;
             }
         }
@@ -393,15 +362,19 @@ namespace TAISAT
                     OtonomKontrol();
                     break;
                 case Keys.W:
+                    buttonIleri_MouseUp(buttonIleri, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
                     buttonIleri.BackColor = Color.FromArgb(54, 57, 63);
                     break;
                 case Keys.A:
+                    buttonSol_MouseUp(buttonSol, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
                     buttonSol.BackColor = Color.FromArgb(54, 57, 63);
                     break;
                 case Keys.S:
+                    buttonGeri_MouseUp(buttonGeri, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
                     buttonGeri.BackColor = Color.FromArgb(54, 57, 63);
                     break;
                 case Keys.D:
+                    buttonSag_MouseUp(buttonSag, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0));
                     buttonSag.BackColor = Color.FromArgb(54, 57, 63);
                     break;
             }
@@ -443,35 +416,67 @@ namespace TAISAT
 
 
         //Open WebSocket:
-        private void OpenWebSocket()
+        private async void OpenWebSocket()
         {
             ws = new WebSocket(rosBridgeUrl);
 
             ws.OnOpen += (sender, e) =>
             {
-                MessageBox.Show("ROSBridge sunucusuna bağlantı başarılı.");
                 isWsConnected = true;
+
+                string subscribeMessage = "{ \"op\": \"subscribe\", \"topic\": \"/my_topic\" }";
+                ws.Send(subscribeMessage);
+
+                richTextBoxLoglar.AppendText("Subscribed to /my_topic." + Environment.NewLine);
+
+                Task.Delay(500).ContinueWith(t =>
+                {
+                    if (isWsConnected)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            MessageBox.Show("ROSBridge sunucusuna başarıyla bağlanıldı.");
+                        }));
+                    }
+                });
             };
 
             ws.OnError += (sender, e) =>
             {
-                MessageBox.Show($"WebSocket Error: {e.Message}");
-                Console.WriteLine($"WebSocket Error: {e.Message} - {e.Exception}");
+                MessageBox.Show($"WebSocket Hatası: {e.Message}");
+                Console.WriteLine($"WebSocket Hatası: {e.Message} - {e.Exception}");
                 isWsConnected = false;
             };
 
             ws.OnClose += (sender, e) =>
             {
-                MessageBox.Show("Bağlantı kapatıldı.");
+                this.Invoke(new Action(() =>
+                {
+                    richTextBoxLoglar.AppendText("WebSocket bağlantısı kapatıldı." + Environment.NewLine);
+                    MessageBox.Show("Bağlantı kapatıldı.");
+                }));
                 isWsConnected = false;
             };
 
             ws.OnMessage += (sender, e) =>
             {
-                MessageBox.Show("Mesaj alındı: " + e.Data);
-                
-            };
+                try
+                {
+                    JObject jsonMessage = JObject.Parse(e.Data);
+                    string messageData = jsonMessage["msg"]["data"].ToString();
 
+                    this.Invoke(new Action(() =>
+                    {
+                        richTextBoxLoglar.AppendText("Alındı: " + messageData + Environment.NewLine);
+                }));
+
+                    MessageBox.Show("Mesaj alındı: " + messageData);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Alınan mesaj işlenirken hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            };
 
             try
             {
@@ -603,44 +608,6 @@ namespace TAISAT
                     }
                 }
             }
-        }
-
-
-        //Map Update (Test):
-        private void timerX_Tick(object sender, EventArgs e)
-        {
-
-            if (float.TryParse(Lat.Text, out float floatValueLat))
-            {
-                floatValueLat += 0.001f;
-                Lat.Text = floatValueLat.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Geçersiz enlem değeri.");
-            }
-
-            if (float.TryParse(Long.Text, out float floatValueLong))
-            {
-                floatValueLong += 0.001f;
-                Long.Text = floatValueLong.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Geçersiz boylam değeri.");
-            }
-
-            Harita();
-        }
-
-
-        //Plant Update (Test):
-        private void SimulationTimer_Tick(object sender, EventArgs e)
-        {
-            xCoordinate = Convert.ToSingle(Lat.Text);
-            yCoordinate = Convert.ToSingle(Long.Text);
-
-            richTextBoxBitki.AppendText($"X: {xCoordinate}, Y: {yCoordinate}\n");
         }
     }
 }

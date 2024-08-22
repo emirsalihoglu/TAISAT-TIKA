@@ -82,8 +82,8 @@
             this.comboBoxPort = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
-            this.richTextBoxGorevListesi = new System.Windows.Forms.RichTextBox();
-            this.labelGorevListesi = new System.Windows.Forms.Label();
+            this.richTextBoxLoglar = new System.Windows.Forms.RichTextBox();
+            this.labelLoglar = new System.Windows.Forms.Label();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -102,10 +102,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelBatarya = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.labelHiz = new System.Windows.Forms.Label();
-            this.labelMesafe = new System.Windows.Forms.Label();
             this.labelAracBilgileri = new System.Windows.Forms.Label();
             this.tableLayoutPanelC3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
@@ -124,7 +122,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.timerX = new System.Windows.Forms.Timer(this.components);
             this.timerStartupTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelC1.SuspendLayout();
@@ -700,7 +697,7 @@
             this.richTextBoxBitki.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.richTextBoxBitki.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxBitki.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxBitki.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.richTextBoxBitki.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.richTextBoxBitki.ForeColor = System.Drawing.Color.White;
             this.richTextBoxBitki.Location = new System.Drawing.Point(3, 40);
             this.richTextBoxBitki.Name = "richTextBoxBitki";
@@ -945,8 +942,8 @@
             this.tableLayoutPanel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.tableLayoutPanel19.ColumnCount = 1;
             this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel19.Controls.Add(this.richTextBoxGorevListesi, 0, 1);
-            this.tableLayoutPanel19.Controls.Add(this.labelGorevListesi, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.richTextBoxLoglar, 0, 1);
+            this.tableLayoutPanel19.Controls.Add(this.labelLoglar, 0, 0);
             this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel19.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
@@ -956,33 +953,32 @@
             this.tableLayoutPanel19.Size = new System.Drawing.Size(361, 207);
             this.tableLayoutPanel19.TabIndex = 8;
             // 
-            // richTextBoxGorevListesi
+            // richTextBoxLoglar
             // 
-            this.richTextBoxGorevListesi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.richTextBoxGorevListesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxGorevListesi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxGorevListesi.Enabled = false;
-            this.richTextBoxGorevListesi.Font = new System.Drawing.Font("Bahnschrift Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.richTextBoxGorevListesi.ForeColor = System.Drawing.Color.White;
-            this.richTextBoxGorevListesi.Location = new System.Drawing.Point(3, 38);
-            this.richTextBoxGorevListesi.Name = "richTextBoxGorevListesi";
-            this.richTextBoxGorevListesi.ReadOnly = true;
-            this.richTextBoxGorevListesi.Size = new System.Drawing.Size(355, 166);
-            this.richTextBoxGorevListesi.TabIndex = 9;
-            this.richTextBoxGorevListesi.Text = "";
+            this.richTextBoxLoglar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.richTextBoxLoglar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxLoglar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxLoglar.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.richTextBoxLoglar.ForeColor = System.Drawing.Color.White;
+            this.richTextBoxLoglar.Location = new System.Drawing.Point(3, 38);
+            this.richTextBoxLoglar.Name = "richTextBoxLoglar";
+            this.richTextBoxLoglar.ReadOnly = true;
+            this.richTextBoxLoglar.Size = new System.Drawing.Size(355, 166);
+            this.richTextBoxLoglar.TabIndex = 9;
+            this.richTextBoxLoglar.Text = "";
             // 
-            // labelGorevListesi
+            // labelLoglar
             // 
-            this.labelGorevListesi.AutoSize = true;
-            this.labelGorevListesi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelGorevListesi.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGorevListesi.ForeColor = System.Drawing.Color.White;
-            this.labelGorevListesi.Location = new System.Drawing.Point(3, 0);
-            this.labelGorevListesi.Name = "labelGorevListesi";
-            this.labelGorevListesi.Size = new System.Drawing.Size(355, 35);
-            this.labelGorevListesi.TabIndex = 1;
-            this.labelGorevListesi.Text = "GÖREV LİSTESİ";
-            this.labelGorevListesi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLoglar.AutoSize = true;
+            this.labelLoglar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelLoglar.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLoglar.ForeColor = System.Drawing.Color.White;
+            this.labelLoglar.Location = new System.Drawing.Point(3, 0);
+            this.labelLoglar.Name = "labelLoglar";
+            this.labelLoglar.Size = new System.Drawing.Size(355, 35);
+            this.labelLoglar.TabIndex = 1;
+            this.labelLoglar.Text = "LOGLAR";
+            this.labelLoglar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel18
             // 
@@ -1242,37 +1238,23 @@
             this.tableLayoutPanel10.ColumnCount = 2;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Controls.Add(this.label11, 0, 1);
             this.tableLayoutPanel10.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.labelHiz, 1, 0);
-            this.tableLayoutPanel10.Controls.Add(this.labelMesafe, 1, 1);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 148);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 2;
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(355, 43);
             this.tableLayoutPanel10.TabIndex = 1;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label11.Location = new System.Drawing.Point(51, 22);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 19);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "MESAFE:";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.Location = new System.Drawing.Point(70, 1);
+            this.label9.Location = new System.Drawing.Point(70, 12);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 19);
             this.label9.TabIndex = 0;
@@ -1282,22 +1264,14 @@
             // labelHiz
             // 
             this.labelHiz.AutoSize = true;
+            this.labelHiz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelHiz.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelHiz.Location = new System.Drawing.Point(180, 0);
             this.labelHiz.Name = "labelHiz";
-            this.labelHiz.Size = new System.Drawing.Size(50, 19);
+            this.labelHiz.Size = new System.Drawing.Size(172, 43);
             this.labelHiz.TabIndex = 3;
             this.labelHiz.Text = "0 m/s";
-            // 
-            // labelMesafe
-            // 
-            this.labelMesafe.AutoSize = true;
-            this.labelMesafe.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelMesafe.Location = new System.Drawing.Point(180, 21);
-            this.labelMesafe.Name = "labelMesafe";
-            this.labelMesafe.Size = new System.Drawing.Size(36, 19);
-            this.labelMesafe.TabIndex = 4;
-            this.labelMesafe.Text = "0 m";
+            this.labelHiz.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelAracBilgileri
             // 
@@ -1577,11 +1551,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1904, 1041);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // timerX
-            // 
-            this.timerX.Interval = 2000;
-            this.timerX.Tick += new System.EventHandler(this.timerX_Tick);
-            // 
             // TAAV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1689,8 +1658,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
         private System.Windows.Forms.Label labelPort;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
-        private System.Windows.Forms.RichTextBox richTextBoxGorevListesi;
-        private System.Windows.Forms.Label labelGorevListesi;
+        private System.Windows.Forms.RichTextBox richTextBoxLoglar;
+        private System.Windows.Forms.Label labelLoglar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -1709,10 +1678,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelBatarya;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label labelHiz;
-        private System.Windows.Forms.Label labelMesafe;
         private System.Windows.Forms.Label labelAracBilgileri;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelC3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -1749,12 +1715,12 @@
         private System.Windows.Forms.Label labelEgimX;
         private System.Windows.Forms.PictureBox pictureBoxEgimY;
         private System.Windows.Forms.PictureBox pictureBoxEgimX;
-        private System.Windows.Forms.Timer timerX;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel27;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timerStartupTimer;
         private System.Windows.Forms.RichTextBox richTextBoxBitki;
+        private System.Windows.Forms.Label labelHiz;
     }
 }
 
