@@ -7,9 +7,14 @@ using GMap.NET.WindowsForms.Markers;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.IO.Ports;
+using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -18,53 +23,97 @@ namespace TAISAT
 {
     public partial class TAAV : Form
     {
-        private SerialPort port;
         private bool isGreen = true;
         private bool isWhite = true;
         private bool isStarted = true;
         private bool isMapActive = false;
         private WebSocket ws;
         private bool isWsConnected = false;
-        string rosBridgeUrl = "ws://192.168.143.160:9090"; //ROS Server IP'sine göre özelleştirilecek.
+        string rosBridgeUrl = "ws://192.168.246.24:9090"; //ROS Server IP'sine göre özelleştirilecek.
         private Image originalImageX;
         private Image originalImageY;
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
+        private StringBuilder incomingDataBuffer = new StringBuilder();
 
         public TAAV()
         {
             InitializeComponent();
-            port = new SerialPort("COM2", 9600);
-            port.DataReceived += Port_DataReceived;
-
-            try
-            {
-                port.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Port açılamadı: " + ex.Message);
-            }
+            InitializeSerialPort();
         }
 
 
-        //Camera:
-        private void ListCameras()
+        //Port:
+        private void InitializeSerialPort()
         {
-            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            serialPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
+            serialPort.DataReceived += SerialPort_DataReceived;
+            serialPort.Encoding = Encoding.ASCII; // This can be changed depending on the data format
+        }
 
-            foreach (FilterInfo device in videoDevices)
+        private List<byte> dataBuffer = new List<byte>(); // To accumulate data
+
+        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
             {
-                comboBox1.Items.Add(device.Name);
+                // Read the available data into a byte array
+                byte[] buffer = new byte[serialPort.BytesToRead];
+                serialPort.Read(buffer, 0, buffer.Length);
+
+                // Add new data to the buffer list
+                dataBuffer.AddRange(buffer);
+
+                // Process data if we have enough bytes
+                ProcessData();
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that might occur during read
+                MessageBox.Show($"Error reading from serial port: {ex.Message}");
+            }
+        }
+
+        private void ProcessData()
+        {
+            // Check if we have exactly 10 bytes
+            if (dataBuffer.Count < 10)
+            {
+                return; // Not enough data yet
             }
 
-            if (comboBox1.Items.Count > 0)
+            // Extract the first 10 bytes for processing
+            byte[] buffer = dataBuffer.Take(10).ToArray();
+
+            // Remove processed data from the buffer
+            dataBuffer.RemoveRange(0, 10);
+
+            // Extract and convert data
+            float enlem = BitConverter.ToSingle(buffer, 0);
+            float boylam = BitConverter.ToSingle(buffer, 4);
+            uint hiz1 = buffer[8];
+            uint hiz2 = buffer[9];
+
+            // Calculate average speed
+            float averageSpeed = (hiz1 + hiz2) / 2f;
+
+            // Update UI controls with the extracted data
+            if (InvokeRequired)
             {
-                comboBox1.SelectedIndex = 0;
+                Invoke(new Action(() =>
+                {
+                    Lat.Text = enlem.ToString("F5"); // Format to 2 decimal places
+                    Long.Text = boylam.ToString("F5"); // Format to 2 decimal places
+                    labelHiz.Text = averageSpeed.ToString("F2") + " m/s"; // Format to 2 decimal places
+
+                    Harita();
+                }));
             }
             else
             {
-                MessageBox.Show("Kamera bulunamadı!");
+                Lat.Text = enlem.ToString("F2");
+                Long.Text = boylam.ToString("F2");
+                labelHiz.Text = averageSpeed.ToString("F2");
             }
         }
 
@@ -72,23 +121,10 @@ namespace TAISAT
         //Form Load and Form Closing:
         private void Form1_Load(object sender, EventArgs e)
         {
-            ListCameras();
-
             //Timer:
             timerSaat.Start();
             this.KeyDown += Form1_KeyDown;
             this.KeyPreview = true;
-
-            //Port:
-            foreach (string portName in SerialPort.GetPortNames())
-            {
-                comboBoxPort.Items.Add(portName);
-            }
-
-            if (comboBoxPort.Items.Count > 0)
-            {
-                comboBoxPort.SelectedIndex = 0;
-            }
 
             //Button Customization:
             CustomButton.SetButton(this.Controls);
@@ -125,11 +161,6 @@ namespace TAISAT
             {
                 ws.Close();
             }
-            if (videoSource != null && videoSource.IsRunning)
-            {
-                videoSource.SignalToStop();
-                videoSource.WaitForStop();
-            }
         }
 
 
@@ -140,61 +171,22 @@ namespace TAISAT
         }
 
 
-        //Port:
-        private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            string data = port.ReadLine();
-
-            data = data.Trim('{', '}');
-
-            Invoke(new Action(() =>
-            {
-                string[] dataArray = data.Split(',');
-
-                if (dataArray.Length >= 4)
-                {
-                    string latitude = dataArray[0];
-                    string longitude = dataArray[1];
-                    string hiz1 = dataArray[2];
-                    string hiz2 = dataArray[3];
-
-                    Lat.Text = latitude;
-                    Long.Text = longitude;
-                    int hiz1Int = Convert.ToInt32(hiz1);
-                    int hiz2Int = Convert.ToInt32(hiz2);
-                    labelHiz.Text = Convert.ToString((hiz1Int + hiz2Int) / 2);
-
-                    Harita();
-                    Angle();
-                    UpdateButtonColors();
-                }
-                else
-                {
-                    MessageBox.Show("Yeterli veri alınamadı.");
-                }
-            }));
-        }
-
-
-
         //Button Click:
         private void buttonBaslat_Click(object sender, EventArgs e)
         {
-            if (!port.IsOpen)
-            {
-                try
-                {
-                    port.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Port açılamadı: " + ex.Message);
-                }
-            }
+            serialPort.Open();
+
+            string yeniMetin = "COM3 port taraması başlatıldı.";
+            string mevcutMetin = richTextBoxPort.Text;
+            richTextBoxPort.Text = mevcutMetin + Environment.NewLine + yeniMetin;
         }
         private void buttonDurdur_Click(object sender, EventArgs e)
         {
-            port.Close();
+            serialPort.Close();
+
+            string yeniMetin = "COM3 port taraması durduruldu.";
+            string mevcutMetin = richTextBoxPort.Text;
+            richTextBoxPort.Text = mevcutMetin + Environment.NewLine + yeniMetin;
         }
         private void buttonHarita_Click(object sender, EventArgs e)
         {
@@ -424,10 +416,10 @@ namespace TAISAT
             {
                 isWsConnected = true;
 
-                string subscribeMessage = "{ \"op\": \"subscribe\", \"topic\": \"/my_topic\" }";
-                ws.Send(subscribeMessage);
-
-                richTextBoxLoglar.AppendText("Subscribed to /my_topic." + Environment.NewLine);
+                // Subscribe to the raw_image_publisher
+                string subscribeMessageCamera = "{ \"op\": \"subscribe\", \"topic\": \"/camera/raw_image\" }";
+                ws.Send(subscribeMessageCamera);
+                richTextBoxLoglar.AppendText("Subscribed to /camera/raw_image." + Environment.NewLine);
 
                 Task.Delay(500).ContinueWith(t =>
                 {
@@ -463,14 +455,33 @@ namespace TAISAT
                 try
                 {
                     JObject jsonMessage = JObject.Parse(e.Data);
-                    string messageData = jsonMessage["msg"]["data"].ToString();
+                    string topic = jsonMessage["topic"].ToString();
 
-                    this.Invoke(new Action(() =>
+                    if (topic == "/camera/raw_image")
                     {
-                        richTextBoxLoglar.AppendText("Alındı: " + messageData + Environment.NewLine);
-                }));
+                        // Handle sensor_msgs/Image data
+                        int height = jsonMessage["msg"]["height"].ToObject<int>();
+                        int width = jsonMessage["msg"]["width"].ToObject<int>();
+                        string encoding = jsonMessage["msg"]["encoding"].ToString();
+                        string dataBase64 = jsonMessage["msg"]["data"].ToString();
+                        byte[] imageData = Convert.FromBase64String(dataBase64); // Correctly parse the base64 string
 
-                    MessageBox.Show("Mesaj alındı: " + messageData);
+                        Image image = ConvertRosImageToBitmap(imageData, width, height, encoding);
+
+                        this.Invoke(new Action(() =>
+                        {
+                            pictureBoxCamera.Image = image;
+                        }));
+                    }
+                    else
+                    {
+                        // Handle other topics
+                        string messageData = jsonMessage["msg"]["data"].ToString();
+                        this.Invoke(new Action(() =>
+                        {
+                            richTextBoxLoglar.AppendText($"Topic: {topic}, Mesaj: {messageData}" + Environment.NewLine);
+                        }));
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -486,6 +497,59 @@ namespace TAISAT
             {
                 MessageBox.Show("Bağlantı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 isWsConnected = false;
+            }
+        }
+
+        private Image ConvertRosImageToBitmap(byte[] imageData, int width, int height, string encoding)
+        {
+            try
+            {
+                Bitmap bmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+                BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, bmp.PixelFormat);
+
+                IntPtr ptr = bmpData.Scan0;
+
+                if (encoding == "bgr8")
+                {
+                    // Convert BGR to RGB
+                    byte[] rgbValues = new byte[imageData.Length];
+                    for (int i = 0; i < imageData.Length; i += 3)
+                    {
+                        rgbValues[i] = imageData[i + 2]; // R
+                        rgbValues[i + 1] = imageData[i + 1]; // G
+                        rgbValues[i + 2] = imageData[i]; // B
+                    }
+                    System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, ptr, rgbValues.Length);
+                }
+                else if (encoding == "rgb8")
+                {
+                    // Directly copy the RGB data
+                    System.Runtime.InteropServices.Marshal.Copy(imageData, 0, ptr, imageData.Length);
+                }
+                else if (encoding == "mono8")
+                {
+                    // Convert grayscale to RGB
+                    byte[] rgbValues = new byte[width * height * 3];
+                    for (int i = 0; i < width * height; i++)
+                    {
+                        rgbValues[i * 3] = imageData[i]; // R
+                        rgbValues[i * 3 + 1] = imageData[i]; // G
+                        rgbValues[i * 3 + 2] = imageData[i]; // B
+                    }
+                    System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, ptr, rgbValues.Length);
+                }
+                else
+                {
+                    MessageBox.Show($"Unsupported encoding: {encoding}");
+                }
+
+                bmp.UnlockBits(bmpData);
+                return bmp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Image conversion failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 
@@ -508,7 +572,7 @@ namespace TAISAT
             {
                 string rosMessage = "{ \"op\": \"publish\", \"topic\": \"/my_topic\", \"msg\": { \"data\": \"" + data + "\" } }";
                 ws.Send(rosMessage);
-                MessageBox.Show("Sent: " + rosMessage);
+                //MessageBox.Show("Sent: " + rosMessage);
             }
             else
             {
@@ -551,41 +615,6 @@ namespace TAISAT
             {
                 MessageBox.Show("Lütfen geçerli sayısal bir değer girin.");
             }
-        }
-
-
-        //Camera:
-        private void videoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
-        {
-            Bitmap frame = (Bitmap)eventArgs.Frame.Clone();
-            pictureBox1.Image = frame;
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (videoSource != null && videoSource.IsRunning)
-            {
-                videoSource.Stop();
-                pictureBox1.Image = null;
-            }
-
-            videoSource = new VideoCaptureDevice(videoDevices[comboBox1.SelectedIndex].MonikerString);
-
-            VideoCapabilities[] videoCapabilities = videoSource.VideoCapabilities;
-
-            VideoCapabilities highestResolution = videoCapabilities[0];
-            foreach (VideoCapabilities cap in videoCapabilities)
-            {
-                if (cap.FrameSize.Width * cap.FrameSize.Height > highestResolution.FrameSize.Width * highestResolution.FrameSize.Height)
-                {
-                    highestResolution = cap;
-                }
-            }
-
-            videoSource.VideoResolution = highestResolution;
-
-            videoSource.NewFrame += new NewFrameEventHandler(videoSource_NewFrame);
-            videoSource.Start();
         }
 
 

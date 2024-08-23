@@ -73,7 +73,7 @@
             this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
             this.labelPort = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxPort = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonBaslat = new System.Windows.Forms.Button();
@@ -119,8 +119,7 @@
             this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
             this.labelKamera = new System.Windows.Forms.Label();
             this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCamera = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.timerStartupTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelMain.SuspendLayout();
@@ -161,7 +160,7 @@
             this.tableLayoutPanel24.SuspendLayout();
             this.tableLayoutPanel25.SuspendLayout();
             this.tableLayoutPanel27.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -810,7 +809,7 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.95774F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.04225F));
-            this.tableLayoutPanel5.Controls.Add(this.richTextBox2, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.richTextBoxPort, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 38);
@@ -821,17 +820,18 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(355, 166);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
-            // richTextBox2
+            // richTextBoxPort
             // 
-            this.richTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox2.ForeColor = System.Drawing.Color.White;
-            this.richTextBox2.Location = new System.Drawing.Point(119, 3);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(233, 160);
-            this.richTextBox2.TabIndex = 13;
-            this.richTextBox2.Text = "";
+            this.richTextBoxPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.richTextBoxPort.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxPort.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxPort.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxPort.ForeColor = System.Drawing.Color.White;
+            this.richTextBoxPort.Location = new System.Drawing.Point(119, 3);
+            this.richTextBoxPort.Name = "richTextBoxPort";
+            this.richTextBoxPort.Size = new System.Drawing.Size(233, 160);
+            this.richTextBoxPort.TabIndex = 13;
+            this.richTextBoxPort.Text = "";
             // 
             // tableLayoutPanel6
             // 
@@ -1201,7 +1201,7 @@
             this.buttonP1.Name = "buttonP1";
             this.buttonP1.Size = new System.Drawing.Size(52, 62);
             this.buttonP1.TabIndex = 0;
-            this.buttonP1.Text = "4.02";
+            this.buttonP1.Text = "3.4";
             this.buttonP1.UseVisualStyleBackColor = false;
             // 
             // label2
@@ -1506,36 +1506,25 @@
             // tableLayoutPanel27
             // 
             this.tableLayoutPanel27.ColumnCount = 1;
-            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel27.Controls.Add(this.comboBox1, 0, 0);
-            this.tableLayoutPanel27.Controls.Add(this.pictureBox1, 0, 1);
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel27.Controls.Add(this.pictureBoxCamera, 0, 0);
             this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel27.Location = new System.Drawing.Point(3, 63);
             this.tableLayoutPanel27.Name = "tableLayoutPanel27";
-            this.tableLayoutPanel27.RowCount = 2;
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.823529F));
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.17647F));
+            this.tableLayoutPanel27.RowCount = 1;
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel27.Size = new System.Drawing.Size(742, 442);
             this.tableLayoutPanel27.TabIndex = 2;
             // 
-            // comboBox1
+            // pictureBoxCamera
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(736, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 42);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(736, 397);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxCamera.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxCamera.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxCamera.Name = "pictureBoxCamera";
+            this.pictureBoxCamera.Size = new System.Drawing.Size(736, 436);
+            this.pictureBoxCamera.TabIndex = 1;
+            this.pictureBoxCamera.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
@@ -1621,7 +1610,7 @@
             this.tableLayoutPanel25.ResumeLayout(false);
             this.tableLayoutPanel25.PerformLayout();
             this.tableLayoutPanel27.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1694,13 +1683,9 @@
         private System.Windows.Forms.Button buttonZoomIn;
         private System.Windows.Forms.Label labelHarita;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBoxPort;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private System.Windows.Forms.Button buttonBaslat;
-        private System.Windows.Forms.Button buttonDurdur;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.ComboBox comboBoxPort;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonWebSocket;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel23;
@@ -1716,11 +1701,15 @@
         private System.Windows.Forms.PictureBox pictureBoxEgimY;
         private System.Windows.Forms.PictureBox pictureBoxEgimX;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel27;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxCamera;
         private System.Windows.Forms.Timer timerStartupTimer;
         private System.Windows.Forms.RichTextBox richTextBoxBitki;
         private System.Windows.Forms.Label labelHiz;
+        private System.IO.Ports.SerialPort serialPort;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Button buttonBaslat;
+        private System.Windows.Forms.Button buttonDurdur;
+        private System.Windows.Forms.ComboBox comboBoxPort;
     }
 }
 
