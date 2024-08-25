@@ -1201,7 +1201,7 @@
             this.buttonP1.Name = "buttonP1";
             this.buttonP1.Size = new System.Drawing.Size(52, 62);
             this.buttonP1.TabIndex = 0;
-            this.buttonP1.Text = "3.4";
+            this.buttonP1.Text = "4.02";
             this.buttonP1.UseVisualStyleBackColor = false;
             // 
             // label2
@@ -1513,7 +1513,7 @@
             this.tableLayoutPanel27.Name = "tableLayoutPanel27";
             this.tableLayoutPanel27.RowCount = 1;
             this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
             this.tableLayoutPanel27.Size = new System.Drawing.Size(742, 442);
             this.tableLayoutPanel27.TabIndex = 2;
             // 
@@ -1523,6 +1523,7 @@
             this.pictureBoxCamera.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxCamera.Name = "pictureBoxCamera";
             this.pictureBoxCamera.Size = new System.Drawing.Size(736, 436);
+            this.pictureBoxCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCamera.TabIndex = 1;
             this.pictureBoxCamera.TabStop = false;
             // 

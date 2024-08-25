@@ -29,12 +29,13 @@ namespace TAISAT
         private bool isMapActive = false;
         private WebSocket ws;
         private bool isWsConnected = false;
-        string rosBridgeUrl = "ws://192.168.246.24:9090"; //ROS Server IP'sine göre özelleştirilecek.
+        string rosBridgeUrl = "ws://192.168.53.180:9090"; //ROS Server IP'sine göre özelleştirilecek.
         private Image originalImageX;
         private Image originalImageY;
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
         private StringBuilder incomingDataBuffer = new StringBuilder();
+        private List<byte> dataBuffer = new List<byte>();
 
         public TAAV()
         {
@@ -48,63 +49,55 @@ namespace TAISAT
         {
             serialPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
             serialPort.DataReceived += SerialPort_DataReceived;
-            serialPort.Encoding = Encoding.ASCII; // This can be changed depending on the data format
+            serialPort.Encoding = Encoding.ASCII;
         }
-
-        private List<byte> dataBuffer = new List<byte>(); // To accumulate data
-
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
-                // Read the available data into a byte array
                 byte[] buffer = new byte[serialPort.BytesToRead];
                 serialPort.Read(buffer, 0, buffer.Length);
 
-                // Add new data to the buffer list
                 dataBuffer.AddRange(buffer);
 
-                // Process data if we have enough bytes
                 ProcessData();
             }
             catch (Exception ex)
             {
-                // Handle any exceptions that might occur during read
                 MessageBox.Show($"Error reading from serial port: {ex.Message}");
             }
         }
-
         private void ProcessData()
         {
-            // Check if we have exactly 10 bytes
             if (dataBuffer.Count < 10)
             {
-                return; // Not enough data yet
+                return;
             }
 
-            // Extract the first 10 bytes for processing
             byte[] buffer = dataBuffer.Take(10).ToArray();
 
-            // Remove processed data from the buffer
             dataBuffer.RemoveRange(0, 10);
 
-            // Extract and convert data
             float enlem = BitConverter.ToSingle(buffer, 0);
             float boylam = BitConverter.ToSingle(buffer, 4);
             uint hiz1 = buffer[8];
             uint hiz2 = buffer[9];
+            float wheelCircumference = 1.0f;
 
-            // Calculate average speed
-            float averageSpeed = (hiz1 + hiz2) / 2f;
+            float averageSpeedRPM = (hiz1 + hiz2) / 2f;
+            float averageSpeedMS = (averageSpeedRPM * wheelCircumference) / 60f;
 
-            // Update UI controls with the extracted data
+
+
             if (InvokeRequired)
             {
                 Invoke(new Action(() =>
                 {
-                    Lat.Text = enlem.ToString("F5"); // Format to 2 decimal places
-                    Long.Text = boylam.ToString("F5"); // Format to 2 decimal places
-                    labelHiz.Text = averageSpeed.ToString("F2") + " m/s"; // Format to 2 decimal places
+                    Lat.Text = enlem.ToString("F7"); // Format to 5 decimal places
+                    Long.Text = boylam.ToString("F7"); // Format to 5 decimal places
+                    labelHiz.Text = averageSpeedMS.ToString("F2") + " m/s"; // Format to 2 decimal places
+                    labelEgimX.Text = hiz1.ToString();
+                    labelEgimY.Text = hiz2.ToString();
 
                     Harita();
                 }));
@@ -113,7 +106,7 @@ namespace TAISAT
             {
                 Lat.Text = enlem.ToString("F2");
                 Long.Text = boylam.ToString("F2");
-                labelHiz.Text = averageSpeed.ToString("F2");
+                labelHiz.Text = averageSpeedMS.ToString("F2");
             }
         }
 
@@ -261,7 +254,6 @@ namespace TAISAT
         {
             SendRosMessage("capa kaldir");
         }
-
         private void buttonWebSocket_Click(object sender, EventArgs e)
         {
             if (isWsConnected)
@@ -416,7 +408,6 @@ namespace TAISAT
             {
                 isWsConnected = true;
 
-                // Subscribe to the raw_image_publisher
                 string subscribeMessageCamera = "{ \"op\": \"subscribe\", \"topic\": \"/camera/raw_image\" }";
                 ws.Send(subscribeMessageCamera);
                 richTextBoxLoglar.AppendText("Subscribed to /camera/raw_image." + Environment.NewLine);
@@ -459,7 +450,6 @@ namespace TAISAT
 
                     if (topic == "/camera/raw_image")
                     {
-                        // Handle sensor_msgs/Image data
                         int height = jsonMessage["msg"]["height"].ToObject<int>();
                         int width = jsonMessage["msg"]["width"].ToObject<int>();
                         string encoding = jsonMessage["msg"]["encoding"].ToString();
@@ -475,7 +465,6 @@ namespace TAISAT
                     }
                     else
                     {
-                        // Handle other topics
                         string messageData = jsonMessage["msg"]["data"].ToString();
                         this.Invoke(new Action(() =>
                         {
@@ -500,6 +489,8 @@ namespace TAISAT
             }
         }
 
+
+        //Camera:
         private Image ConvertRosImageToBitmap(byte[] imageData, int width, int height, string encoding)
         {
             try
@@ -511,7 +502,6 @@ namespace TAISAT
 
                 if (encoding == "bgr8")
                 {
-                    // Convert BGR to RGB
                     byte[] rgbValues = new byte[imageData.Length];
                     for (int i = 0; i < imageData.Length; i += 3)
                     {
@@ -523,12 +513,10 @@ namespace TAISAT
                 }
                 else if (encoding == "rgb8")
                 {
-                    // Directly copy the RGB data
                     System.Runtime.InteropServices.Marshal.Copy(imageData, 0, ptr, imageData.Length);
                 }
                 else if (encoding == "mono8")
                 {
-                    // Convert grayscale to RGB
                     byte[] rgbValues = new byte[width * height * 3];
                     for (int i = 0; i < width * height; i++)
                     {
@@ -572,7 +560,7 @@ namespace TAISAT
             {
                 string rosMessage = "{ \"op\": \"publish\", \"topic\": \"/my_topic\", \"msg\": { \"data\": \"" + data + "\" } }";
                 ws.Send(rosMessage);
-                //MessageBox.Show("Sent: " + rosMessage);
+                /*MessageBox.Show("Sent: " + rosMessage); //mesaj iletildiğine dair bildirim gerekirse kullanılacak.*/
             }
             else
             {
